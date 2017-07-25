@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextBox1.Text" xml:space="preserve">
+    <value>HOW IT WORKS:
+
+1) BillardBot uses compiled AutoIT Scripts using ImageSearch.dll to find images to click on. 
+
+2) Restarter uses SaeedSearch.dll found on Nulled.io forums to find images to click on but uses too much memory to make use for the entire bot.
+
+--------------------
+
+A) BillardBot:
+Start will start all bots in the CurrentDir folder named "bots" which is the location of the compiled autoit script Bot1, Bot2, Bot3, Bot4. Along with a count down timer. Everytime you open the bot it will automatically start if the .txt file named "looptrue.txt" is in the same directory. If you don't want the bot to start automatically then delete the "looptrue.txt" from the directory which will then disable the loop.
+
+B) RestarterBot:
+{#1} PROCESS OF FORMLOAD
+Form_Load &amp; tmrWelcome
+When this RestarterBot loads it will enable a hotkey named "tmrWelcome" too give you 5 seconds to exit the bot by pushing Numpad1, You can still do this if you fail to do it after 5 seconds doesn't matter. After "tmrWelcome" is not enabled it will then check for the process BlueStacks_old.exe and HD-RunApp.exe too see if it's open if it is it will kill the process and then restart it. 
+
+{#2} PROCESS OF CLOSING BLUESTACKS TV
+tmrBsTv
+This timer will check too see using ImageSearch for BlueStacks Tv exit image to close it off.
+
+{#2} PROCESS OF THE BOT STARTING
+tmrStartBot
+This timer searches for the inactive android tab, Clicks it, then waits 25 seconds for it too load up. Then after 25 seconds the timer is stopped enabling another called tmrPause.
+
+{#3} PROCESS OF THE FIRST BREAK
+tmrPause
+This timer is just a break period since I don't know any other way of doing it without using timers. This was the fastest way I knew how to do it without researching the web for it coding. After the pause tmrStartBot2 timer will start up.
+
+{#4} 
+tmrStartBot2
+This timer will search for the inactive android home screen in bluestacks, and then another which is the active icon of 8 ball pool. I'm using a rooted version of bluestacks version: BlueStacks.2.2.27.6431 it can be found on mybot.run. then tmrWait is enabled waits 2 seconds.
+
+{#5} FINAL BREAK
+tmrWait
+After a 2 seconds break tmrStart3 is started
+
+{#6} FINAL STEP
+tmrStartBot2
+This timer searches to see if the 8ball pool miniclip boot screen loads and if it finds the blackscreen and the word "miniclip" it will finally start BillardBot.exe again and start botting once again.
+
+
+
+
+
+
+
+
+
+
+
+</value>
+  </data>
+</root>
