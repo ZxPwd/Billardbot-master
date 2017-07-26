@@ -93,6 +93,13 @@
 
     End Sub
 
+    Public Sub KillAllPRocesses()
+
+
+
+
+    End Sub
+
 
 
     Public Sub BluestacksRestartBot()

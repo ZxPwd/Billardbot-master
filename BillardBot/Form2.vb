@@ -299,6 +299,7 @@ ByVal lpFileName As String) As Integer
         End If
     End Sub
     Dim DocAbout As New FormAbout
+
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         DocAbout.Show()
 

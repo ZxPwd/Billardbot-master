@@ -162,6 +162,18 @@ ByVal lpFileName As String) As Integer
         'lblMin.Text = min
         lblSec.Text = sec
 
+        If sec = 5 Then
+            lblDebugger.Text = ("Less then 5 minutes remaining!")
+        ElseIf sec = 4 Then
+            lblDebugger.Text = ("Less then 4 minutes remaining!")
+        ElseIf sec = 3 Then
+            lblDebugger.Text = ("Less then 3 minutes remaining!")
+        ElseIf sec = 2 Then
+            lblDebugger.Text = ("Less then 2 minutes remaining!")
+        ElseIf sec = 1 Then
+            lblDebugger.Text = ("Less then 1 minute remaining!")
+        End If
+
     End Sub
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
@@ -208,22 +220,7 @@ ByVal lpFileName As String) As Integer
         '1) TURN OFF EVERYTHING
         '2) KILL PROCESSES OF ALL ACTIVE RUNNING BOTS!
         '3) START PROCESS OF BLUESTACKS RESTART BOT // MADE IN VB.NET
-
-
-
-
-
-        'If lblMin.Text = "1" Or "2" Or "3" Or "4" Or "5" Or "6" Or "7" Or "8" Or "9" Or "0" _
-        '                 Or "12" Or "13" Or "14" Or "15" Or "16" Or "17" Or "18" Or "19" Or "20" _
-        '                 Or "21" Or "22" Or "23" Or "24" Or "25" Or "26" Or "27" Or "28" Or "29" Or "30" _
-        '                 Or "31" Or "32" Or "33" Or "34" Or "35" Or "36" Or "37" Or "38" Or "39" Or "40" _
-        '                 Or "41" Or "42" Or "43" Or "44" Or "45" Or "46" Or "47" Or "48" Or "49" Or "50" _
-        '                 Or "51" Or "52" Or "53" Or "54" Or "55" Or "56" Or "57" Or "58" Or "59" Or "60" _
-        '                 Or "61" Or "62" Or "63" Or "64" Or "65" _
-        '                Or "66" Or "67" Or "68" Or "69" Or "70" Then
         If lblMin.Text = "0" Then
-
-
 
             'ActionList.Items.Add("LOOP: Elapsed Time") ' TELLS ME WHEN IT STOPPED TO KEEP TRACK OF HOW MANY TIME IT RAN
             'lblActionList.Text = ("ActionList: Stopped Listening") ' SO I KNOW ITS NOT LISTENING ANYMORE
@@ -231,16 +228,10 @@ ByVal lpFileName As String) As Integer
             ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
             '''''''BELOW HERE ENTER CODE TO KILL ALL BOTS AND START BS RESTART BOT''''''''
             '
-            '  
-            '
             KillAllBots() ' From ShortcutModules
             KillBs() ' Kill BlueStacks Processes
             Thread.Sleep(1500)
             BluestacksRestartBot() ' From ShortcutModules
-
-            '
-            '
-            '
             '''''''''''
             tmrWatchDog.Stop() ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
             tmrCount.Stop()    ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
@@ -300,14 +291,48 @@ ByVal lpFileName As String) As Integer
         End If
     End Sub
 
-    Private Sub FormSkin1_Click(sender As Object, e As EventArgs) Handles FormSkin1.Click
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub btnRestartBot_Click(sender As Object, e As EventArgs) Handles btnRestartBot.Click
         KillAllBots() ' From ShortcutModules
         KillBs() ' Kill BlueStacks Processes
         Thread.Sleep(1500)
         BluestacksRestartBot() ' From ShortcutModules
+    End Sub
+
+    Private Sub tmrLoadSettings_Tick(sender As Object, e As EventArgs) Handles tmrLoadSettings.Tick
+
+    End Sub
+
+    Private Sub tmrMousePosition_Tick(sender As Object, e As EventArgs) Handles tmrMousePosition.Tick
+        posXbox.Text = (Cursor.Position.X)
+        posYbox.Text = (Cursor.Position.Y)
+    End Sub
+
+
+
+    Private Sub btnGetCoordinates_Click(sender As Object, e As EventArgs) Handles btnGetCoordinates.Click
+        tmrMousePosition.Start()
+        tmrMousePositionAddItem.Start()
+    End Sub
+
+    Private Sub tmrMousePositionAddItem_Tick(sender As Object, e As EventArgs) Handles tmrMousePositionAddItem.Tick
+        ' If you push Left-ALT key it will send the pos in the listbox.
+        If My.Computer.Keyboard.AltKeyDown Then
+            CoordinatesList.AddItem("X: " + posXbox.Text + ", " + "Y: " + posYbox.Text + " -- Coordinates Added")
+        End If
+    End Sub
+
+    Private Sub btnStopCoordinates_Click(sender As Object, e As EventArgs) Handles btnStopCoordinates.Click
+        tmrMousePosition.Stop()
+        tmrMousePositionAddItem.Stop()
+    End Sub
+
+    Dim DocOptions As New Form4
+    Private Sub btnMoreOptions_Click(sender As Object, e As EventArgs) Handles btnMoreOptions.Click
+        Dim x As Integer
+        Dim y As Integer
+        x = Screen.PrimaryScreen.WorkingArea.Width - 385
+        y = Screen.PrimaryScreen.WorkingArea.Height - 1050
+        Me.Location = New Point(x, y)
+        DocOptions.Visible = True
     End Sub
 End Class
