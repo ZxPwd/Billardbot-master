@@ -13,9 +13,7 @@ A) BillardBot:
 Start will start all bots in the CurrentDir folder named "bots" which is the 
 location of the compiled autoit script Bot1, Bot2, Bot3, Bot4. Along with a 
 count down timer. Everytime you open the bot it will automatically start if 
-the .txt file named "looptrue.txt" is in the same directory. If you don't want 
-the bot to start automatically then delete the "looptrue.txt" from the
- directory which will then disable the loop.
+you have the loop checkbox checked off.
 
 B) RestarterBot:
 {#1} PROCESS OF FORMLOAD
