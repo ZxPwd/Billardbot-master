@@ -1,4 +1,6 @@
 # Billardbot-master
+# Current Version: 1.4
+
 HOW IT WORKS:
 
 1) BillardBot uses compiled AutoIT Scripts using ImageSearch.dll
