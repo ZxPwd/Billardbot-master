@@ -101,7 +101,7 @@ ByVal lpFileName As String) As Integer
         CheckLoop = ReadIniValue("C:\BillardBot\settings.ini", "data", "Loop")
         txtMin.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "Minutes")
         txtSecs.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "Seconds")
-        DebuggerList.AddItem("Form Loaded")
+        DebuggerList.AddItem("Form Loaded" & " @ " & My.Computer.Clock.LocalTime)
 
         ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         ';;;;;;;;;;;; BELOW HERE IS THE CHECKBOX FOR LOOPING THE BOT          ;;;;;;;;;;;;;
@@ -365,19 +365,17 @@ ByVal lpFileName As String) As Integer
 
 
         If Process.GetProcessesByName("Bot").Count > 0 Then
-                lblActiveBots.Text = ("STATUS: Yes there are running bots")
-                lblActiveBots.ForeColor = Color.Lime
+            lblActiveBots.Text = ("STATUS: There is" & " " & proc & " " & "bots runnings")
+            lblActiveBots.ForeColor = Color.Lime
 
-                lblProcessAmount.Text = proc
-                lblProcessAmount.ForeColor = Color.Lime
-            Else
+
+        Else
                 'lblActiveBots.Text = ("STATUS: There is ") + ("( ") + proc + (" )") + ("bot running!")
                 lblActiveBots.ForeColor = Color.Orange
-                lblActiveBots.Text = ("STATUS: No there are no running bots")
+            lblActiveBots.Text = ("STATUS: There is" & " " & proc & " " & "bots runnings")
 
-                lblProcessAmount.Text = proc
-                lblProcessAmount.ForeColor = Color.Orange
-            End If
+
+        End If
 
 
 
@@ -404,5 +402,20 @@ ByVal lpFileName As String) As Integer
         StartAllBots()
         tmrCount.Start()
         tmrWatchDog.Start()
+    End Sub
+
+    'Sub status(ByVal status As String)
+    '    lblStatus.Text = status & " @ " & My.Computer.Clock.LocalTime
+    'End Sub
+    Private Sub btnClearLog_Click(sender As Object, e As EventArgs) Handles btnClearLog.Click
+        DebuggerList.Clear()
+        DebuggerList.AddItem(" @ " & My.Computer.Clock.LocalTime)
+    End Sub
+
+    Private Sub BtnSaveLog_Click(sender As Object, e As EventArgs) Handles BtnSaveLog.Click
+        FileOpen(1, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\zieixt's list.txt", OpenMode.Output)
+        For i = 0 To DebuggerList.items.Count - 1
+            PrintLine(1, DebuggerList.items(i))
+        Next
     End Sub
 End Class

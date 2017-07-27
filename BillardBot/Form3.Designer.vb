@@ -37,9 +37,12 @@ Partial Class Form3
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.btnStartBs = New BillardBot.FlatButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblProcessAmount = New System.Windows.Forms.Label()
+        Me.BtnSaveLog = New BillardBot.FlatButton()
+        Me.btnClearLog = New BillardBot.FlatButton()
         Me.btnStartBotx2 = New BillardBot.FlatButton()
         Me.lblActiveBots = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnSave = New BillardBot.FlatButton()
         Me.DebuggerList = New BillardBot.FlatListBox()
@@ -119,7 +122,7 @@ Partial Class Form3
         Me.FormSkin1.HeaderMaximize = False
         Me.FormSkin1.Location = New System.Drawing.Point(0, 0)
         Me.FormSkin1.Name = "FormSkin1"
-        Me.FormSkin1.Size = New System.Drawing.Size(385, 480)
+        Me.FormSkin1.Size = New System.Drawing.Size(385, 526)
         Me.FormSkin1.TabIndex = 0
         Me.FormSkin1.Text = "BillardBot - Miniclip 8 Ball Pool"
         '
@@ -133,7 +136,7 @@ Partial Class Form3
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(75, 13)
         Me.Label1.TabIndex = 19
-        Me.Label1.Text = "BUILD: 1010"
+        Me.Label1.Text = "BUILD: 1013"
         '
         'FlatTabControl1
         '
@@ -147,7 +150,7 @@ Partial Class Form3
         Me.FlatTabControl1.Location = New System.Drawing.Point(3, 77)
         Me.FlatTabControl1.Name = "FlatTabControl1"
         Me.FlatTabControl1.SelectedIndex = 0
-        Me.FlatTabControl1.Size = New System.Drawing.Size(374, 372)
+        Me.FlatTabControl1.Size = New System.Drawing.Size(374, 420)
         Me.FlatTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.FlatTabControl1.TabIndex = 18
         '
@@ -167,7 +170,7 @@ Partial Class Form3
         Me.TabPage1.Location = New System.Drawing.Point(4, 44)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(366, 324)
+        Me.TabPage1.Size = New System.Drawing.Size(366, 372)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "BillardBot"
         '
@@ -189,25 +192,45 @@ Partial Class Form3
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(82, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.lblProcessAmount)
+        Me.Panel1.Controls.Add(Me.BtnSaveLog)
+        Me.Panel1.Controls.Add(Me.btnClearLog)
         Me.Panel1.Controls.Add(Me.btnStartBotx2)
         Me.Panel1.Controls.Add(Me.lblActiveBots)
+        Me.Panel1.Controls.Add(Me.Label5)
+        Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Location = New System.Drawing.Point(8, 44)
+        Me.Panel1.Location = New System.Drawing.Point(8, 39)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(242, 75)
+        Me.Panel1.Size = New System.Drawing.Size(242, 129)
         Me.Panel1.TabIndex = 15
         '
-        'lblProcessAmount
+        'BtnSaveLog
         '
-        Me.lblProcessAmount.AutoSize = True
-        Me.lblProcessAmount.Font = New System.Drawing.Font("Tahoma", 15.25!, System.Drawing.FontStyle.Bold)
-        Me.lblProcessAmount.ForeColor = System.Drawing.Color.Silver
-        Me.lblProcessAmount.Location = New System.Drawing.Point(6, 43)
-        Me.lblProcessAmount.Name = "lblProcessAmount"
-        Me.lblProcessAmount.Size = New System.Drawing.Size(116, 25)
-        Me.lblProcessAmount.TabIndex = 22
-        Me.lblProcessAmount.Text = "Loading..."
+        Me.BtnSaveLog.BackColor = System.Drawing.Color.Transparent
+        Me.BtnSaveLog.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.BtnSaveLog.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnSaveLog.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.BtnSaveLog.Location = New System.Drawing.Point(94, 100)
+        Me.BtnSaveLog.Name = "BtnSaveLog"
+        Me.BtnSaveLog.Rounded = False
+        Me.BtnSaveLog.Size = New System.Drawing.Size(82, 24)
+        Me.BtnSaveLog.TabIndex = 24
+        Me.BtnSaveLog.Text = "Save Log"
+        Me.BtnSaveLog.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'btnClearLog
+        '
+        Me.btnClearLog.BackColor = System.Drawing.Color.Transparent
+        Me.btnClearLog.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnClearLog.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClearLog.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.btnClearLog.Location = New System.Drawing.Point(6, 100)
+        Me.btnClearLog.Name = "btnClearLog"
+        Me.btnClearLog.Rounded = False
+        Me.btnClearLog.Size = New System.Drawing.Size(82, 24)
+        Me.btnClearLog.TabIndex = 23
+        Me.btnClearLog.Text = "Clear Log"
+        Me.btnClearLog.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
         'btnStartBotx2
         '
@@ -215,7 +238,7 @@ Partial Class Form3
         Me.btnStartBotx2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.btnStartBotx2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnStartBotx2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.btnStartBotx2.Location = New System.Drawing.Point(151, 48)
+        Me.btnStartBotx2.Location = New System.Drawing.Point(6, 73)
         Me.btnStartBotx2.Name = "btnStartBotx2"
         Me.btnStartBotx2.Rounded = False
         Me.btnStartBotx2.Size = New System.Drawing.Size(82, 24)
@@ -229,11 +252,35 @@ Partial Class Form3
         Me.lblActiveBots.BackColor = System.Drawing.Color.Transparent
         Me.lblActiveBots.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblActiveBots.ForeColor = System.Drawing.Color.Silver
-        Me.lblActiveBots.Location = New System.Drawing.Point(3, 25)
+        Me.lblActiveBots.Location = New System.Drawing.Point(8, 21)
         Me.lblActiveBots.Name = "lblActiveBots"
         Me.lblActiveBots.Size = New System.Drawing.Size(109, 13)
         Me.lblActiveBots.TabIndex = 20
-        Me.lblActiveBots.Text = "Any bots running?"
+        Me.lblActiveBots.Text = "STATUS: Waiting..."
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Silver
+        Me.Label5.Location = New System.Drawing.Point(9, 28)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(224, 13)
+        Me.Label5.TabIndex = 19
+        Me.Label5.Text = "_______________________________"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Silver
+        Me.Label6.Location = New System.Drawing.Point(68, 46)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(100, 13)
+        Me.Label6.TabIndex = 19
+        Me.Label6.Text = "MORE CONTROLS"
         '
         'Label3
         '
@@ -241,7 +288,7 @@ Partial Class Form3
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Silver
-        Me.Label3.Location = New System.Drawing.Point(59, 3)
+        Me.Label3.Location = New System.Drawing.Point(57, 3)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(124, 13)
         Me.Label3.TabIndex = 19
@@ -266,7 +313,7 @@ Partial Class Form3
         '
         Me.DebuggerList.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.DebuggerList.items = New String() {""}
-        Me.DebuggerList.Location = New System.Drawing.Point(5, 127)
+        Me.DebuggerList.Location = New System.Drawing.Point(4, 174)
         Me.DebuggerList.Name = "DebuggerList"
         Me.DebuggerList.SelectedColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.DebuggerList.Size = New System.Drawing.Size(358, 192)
@@ -278,8 +325,8 @@ Partial Class Form3
         Me.lblSec.AutoSize = True
         Me.lblSec.BackColor = System.Drawing.Color.Transparent
         Me.lblSec.Font = New System.Drawing.Font("Tahoma", 15.0!)
-        Me.lblSec.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.lblSec.Location = New System.Drawing.Point(330, 44)
+        Me.lblSec.ForeColor = System.Drawing.Color.Gray
+        Me.lblSec.Location = New System.Drawing.Point(330, 33)
         Me.lblSec.Name = "lblSec"
         Me.lblSec.Size = New System.Drawing.Size(32, 24)
         Me.lblSec.TabIndex = 14
@@ -322,7 +369,7 @@ Partial Class Form3
         Me.lblMin.Font = New System.Drawing.Font("Tahoma", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lblMin.ImageAlign = System.Drawing.ContentAlignment.BottomRight
-        Me.lblMin.Location = New System.Drawing.Point(247, 43)
+        Me.lblMin.Location = New System.Drawing.Point(260, 33)
         Me.lblMin.Name = "lblMin"
         Me.lblMin.Size = New System.Drawing.Size(103, 77)
         Me.lblMin.TabIndex = 13
@@ -366,7 +413,7 @@ Partial Class Form3
         Me.TabPage2.Location = New System.Drawing.Point(4, 44)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(366, 324)
+        Me.TabPage2.Size = New System.Drawing.Size(366, 372)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "RestartBot"
         '
@@ -400,7 +447,7 @@ Partial Class Form3
         Me.TabPage3.Controls.Add(Me.GroupBox3)
         Me.TabPage3.Location = New System.Drawing.Point(4, 44)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(366, 324)
+        Me.TabPage3.Size = New System.Drawing.Size(366, 372)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Settings"
         '
@@ -616,7 +663,7 @@ Partial Class Form3
         Me.lblDebugger.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.lblDebugger.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.lblDebugger.ForeColor = System.Drawing.Color.White
-        Me.lblDebugger.Location = New System.Drawing.Point(0, 457)
+        Me.lblDebugger.Location = New System.Drawing.Point(0, 503)
         Me.lblDebugger.Name = "lblDebugger"
         Me.lblDebugger.RectColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.lblDebugger.ShowTimeDate = False
@@ -654,7 +701,7 @@ Partial Class Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(385, 480)
+        Me.ClientSize = New System.Drawing.Size(385, 526)
         Me.Controls.Add(Me.FormSkin1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -723,5 +770,8 @@ Partial Class Form3
     Friend WithEvents tmrCheckRunningBots As Timer
     Friend WithEvents lblActiveBots As Label
     Friend WithEvents btnStartBotx2 As FlatButton
-    Friend WithEvents lblProcessAmount As Label
+    Friend WithEvents BtnSaveLog As FlatButton
+    Friend WithEvents btnClearLog As FlatButton
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
 End Class

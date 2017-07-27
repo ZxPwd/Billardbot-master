@@ -118,6 +118,12 @@
 
             End If
         Next
+        For Each p9 As Process In Process.GetProcesses()
+            If p9.ProcessName = "BlueStacks.exe" Then 'Or p.ProcessName = "mspaint"
+                p9.Kill()
+
+            End If
+        Next
     End Sub
 
     Private Sub FormSkin1_Click(sender As Object, e As EventArgs) Handles FormSkin1.Click
