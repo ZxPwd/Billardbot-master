@@ -8,7 +8,7 @@ Imports System
 Public Class Form3
     Dim sec As Integer
     Dim min As Integer
-
+    Dim CheckLoop = ReadIniValue("C:\BillardBot\settings.ini", "data", "Loop") ' Moved
 
 #Region "Section - Declarations"
 
@@ -65,9 +65,19 @@ ByVal lpFileName As String) As Integer
 
 #End Region
 
-    Dim CheckLoop = ReadIniValue("C:\BillardBot\settings.ini", "data", "Loop")
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tmrLoadSettings.Start()
+
+        If Process.GetProcessesByName("Bot1").Count > 0 Then
+            KillAllBots()
+        ElseIf Process.GetProcessesByName("Bot2").Count > 0 Then
+            KillAllBots()
+        ElseIf Process.GetProcessesByName("Bot3").Count > 0 Then
+            KillAllBots()
+        ElseIf Process.GetProcessesByName("Bot4").Count > 0 Then
+            KillAllBots()
+        End If
+
 
 
 
@@ -92,40 +102,49 @@ ByVal lpFileName As String) As Integer
         txtSecs.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "Seconds")
         DebuggerList.AddItem("Form Loaded")
 
+        ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        ';;;;;;;;;;;; BELOW HERE IS THE CHECKBOX FOR LOOPING THE BOT          ;;;;;;;;;;;;;
+        ';;;;;;;;;;;; IF ITS CHECKED THEN IT WILL AUTOMATICALLY START THE BOT ;;;;;;;;;;;;;
+        ';;;;;;;;;;;; WHEN THE RESTARTERBOT OPENS IT                          ;;;;;;;;;;;;;
+        ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
         If CheckLoop = "LoopTrue" Then
-            LoopCheckBox.Checked = True
-            System.Windows.Forms.Cursor.Position = New System.Drawing.Point(1911, 1024) '  Close habbo "Room Explorer"
-            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
-            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+                LoopCheckBox.Checked = True
+                System.Windows.Forms.Cursor.Position = New System.Drawing.Point(1911, 1024) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
+                mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
+                mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
 
-            Dim x As Integer
-            Dim y As Integer
-            x = Screen.PrimaryScreen.WorkingArea.Width - 385
-            y = Screen.PrimaryScreen.WorkingArea.Height - 1050
-            Me.Location = New Point(x, y)
+                Dim x As Integer ' Positions the window to the bottom right so it's not in the way of bluestacks
+                Dim y As Integer ' Positions the window to the bottom right so it's not in the way of bluestacks
+                x = Screen.PrimaryScreen.WorkingArea.Width - 385 ' Positions the window to the bottom right so it's not in the way of bluestacks
+                y = Screen.PrimaryScreen.WorkingArea.Height - 1050 ' Positions the window to the bottom right so it's not in the way of bluestacks
+                Me.Location = New Point(x, y) ' Positions the window to the bottom right so it's not in the way of bluestacks
 
-            DebuggerList.AddItem("Botting Started!")
-            Threading.Thread.Sleep(500)
-            DebuggerList.AddItem("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
-            min = txtMin.Text ' SETS he minutes from textbox
-            sec = txtSecs.Text ' SETS he seconds from textbox
-            StartAllBots()
-            tmrCount.Start()
-            tmrWatchDog.Start()
-        ElseIf CheckLoop = "LoopFalse" Then
-            LoopCheckBox.Checked = False
+                DebuggerList.AddItem("Botting Started!")
+                Threading.Thread.Sleep(500)
+                DebuggerList.AddItem("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
+                min = txtMin.Text ' SETS he minutes from textbox
+                sec = txtSecs.Text ' SETS he seconds from textbox
+                StartAllBots()
+                tmrCount.Start()
+                tmrWatchDog.Start()
+            ElseIf CheckLoop = "LoopFalse" Then
+                LoopCheckBox.Checked = False
 
-        Else
-            DebuggerList.AddItem("Loop not activated")
-        End If
+            Else
+                DebuggerList.AddItem("Loop not activated")
+            End If
 
-        'Dim LoopTrue As String = "looptrue.txt"
-        'Dim Filename As String = System.IO.Path.GetFileName(LoopTrue)
-        'If System.IO.File.Exists(LoopTrue) Then
-        '    LoopCheckBox.Checked = True
-        'Else
-        '    LoopCheckBox.Checked = False
-        'End If
+
+
+
+
+
+        ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        ';;;;;;;;;;;;               THIS IS THE END OF THE CHECKBOX           ;;;;;;;;;;;;;
+        ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
@@ -195,9 +214,8 @@ ByVal lpFileName As String) As Integer
     End Sub
 
     Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
-        lblDebugger.Text = ("Status:")
-        DebuggerList.AddItem("Botting Stopped!")
-        DebuggerList.AddItem("RESETED: min + sec")
+        lblDebugger.Text = ("Status: Bot Stopped")
+        DebuggerList.AddItem("Botting Stopped. Reseted minutes + sec")
 
         KillAllBots()
         tmrCount.Stop()
@@ -238,7 +256,7 @@ ByVal lpFileName As String) As Integer
             tmrStartBot.Stop() ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
             End
         Else
-            lblDebugger.Text = ("Status: Listening...") 'TELLS ME WHEN THE TIMER IS ACTIVE
+            lblDebugger.Text = ("Status: Bot is currently active!") 'TELLS ME WHEN THE TIMER IS ACTIVE
 
 
         End If
@@ -249,8 +267,10 @@ ByVal lpFileName As String) As Integer
 
     End Sub
     Private Sub btnKillAll_Click(sender As Object, e As EventArgs) Handles btnKillAll.Click
-        KillBs()
-        KillAllBots()
+        KillBs2() ' KillBs2 = with message prompt
+        KillAllBots2() ' KillAllBots2 = with message prompt
+
+        lblDebugger.Text = ("Status: KillBs() & KillAllBots()")
     End Sub
 
 
@@ -260,6 +280,7 @@ ByVal lpFileName As String) As Integer
         x = Screen.PrimaryScreen.WorkingArea.Width - 385
         y = Screen.PrimaryScreen.WorkingArea.Height - 1050
         Me.Location = New Point(x, y)
+        lblDebugger.Text = ("Status: Positioned Form to top left")
 
 
     End Sub
@@ -278,6 +299,7 @@ ByVal lpFileName As String) As Integer
                 WritePrivateProfileString("data", "Loop", ("LoopFalse"), "C:\BillardBot\settings.ini")
             End If
         End If
+        lblDebugger.Text = ("Status: Settings Saved!")
     End Sub
 
     Private Sub LoopCheckBox_CheckedChanged(sender As Object) Handles LoopCheckBox.CheckedChanged
@@ -298,9 +320,7 @@ ByVal lpFileName As String) As Integer
         BluestacksRestartBot() ' From ShortcutModules
     End Sub
 
-    Private Sub tmrLoadSettings_Tick(sender As Object, e As EventArgs) Handles tmrLoadSettings.Tick
 
-    End Sub
 
     Private Sub tmrMousePosition_Tick(sender As Object, e As EventArgs) Handles tmrMousePosition.Tick
         posXbox.Text = (Cursor.Position.X)
@@ -334,5 +354,18 @@ ByVal lpFileName As String) As Integer
         y = Screen.PrimaryScreen.WorkingArea.Height - 1050
         Me.Location = New Point(x, y)
         DocOptions.Visible = True
+    End Sub
+
+    Private Sub btnStartBs_Click(sender As Object, e As EventArgs) Handles btnStartBs.Click
+
+
+
+
+
+        lblDebugger.Text = ("Status: BlueStacks Started!")
+    End Sub
+
+    Private Sub FormSkin1_Click(sender As Object, e As EventArgs) Handles FormSkin1.Click
+
     End Sub
 End Class
