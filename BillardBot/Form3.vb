@@ -67,6 +67,7 @@ ByVal lpFileName As String) As Integer
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tmrCheckRunningBots.Start()
 
         If Process.GetProcessesByName("Bot1").Count > 0 Then
             KillAllBots()
@@ -181,17 +182,6 @@ ByVal lpFileName As String) As Integer
         'lblMin.Text = min
         lblSec.Text = sec
 
-        If sec = 5 Then
-            lblDebugger.Text = ("Less then 5 minutes remaining!")
-        ElseIf sec = 4 Then
-            lblDebugger.Text = ("Less then 4 minutes remaining!")
-        ElseIf sec = 3 Then
-            lblDebugger.Text = ("Less then 3 minutes remaining!")
-        ElseIf sec = 2 Then
-            lblDebugger.Text = ("Less then 2 minutes remaining!")
-        ElseIf sec = 1 Then
-            lblDebugger.Text = ("Less then 1 minute remaining!")
-        End If
 
     End Sub
 
@@ -367,5 +357,52 @@ ByVal lpFileName As String) As Integer
 
     Private Sub FormSkin1_Click(sender As Object, e As EventArgs) Handles FormSkin1.Click
 
+    End Sub
+
+
+    Private Sub tmrCheckRunningBots_Tick(sender As Object, e As EventArgs) Handles tmrCheckRunningBots.Tick
+        Dim proc As Integer = Process.GetProcessesByName("Bot").GetUpperBound(0) + 1
+
+
+        If Process.GetProcessesByName("Bot").Count > 0 Then
+                lblActiveBots.Text = ("STATUS: Yes there are running bots")
+                lblActiveBots.ForeColor = Color.Lime
+
+                lblProcessAmount.Text = proc
+                lblProcessAmount.ForeColor = Color.Lime
+            Else
+                'lblActiveBots.Text = ("STATUS: There is ") + ("( ") + proc + (" )") + ("bot running!")
+                lblActiveBots.ForeColor = Color.Orange
+                lblActiveBots.Text = ("STATUS: No there are no running bots")
+
+                lblProcessAmount.Text = proc
+                lblProcessAmount.ForeColor = Color.Orange
+            End If
+
+
+
+
+
+
+
+
+
+    End Sub
+
+    Private Sub btnStartBotx2_Click(sender As Object, e As EventArgs) Handles btnStartBotx2.Click
+
+        System.Windows.Forms.Cursor.Position = New System.Drawing.Point(1911, 1024) '  Close habbo "Room Explorer"
+        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+
+        DebuggerList.AddItem("Botting Started!")
+        Threading.Thread.Sleep(500)
+        DebuggerList.AddItem("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
+        min = txtMin.Text ' SETS he minutes from textbox
+        sec = txtSecs.Text ' SETS he seconds from textbox
+        StartAllBots()
+        StartAllBots()
+        tmrCount.Start()
+        tmrWatchDog.Start()
     End Sub
 End Class

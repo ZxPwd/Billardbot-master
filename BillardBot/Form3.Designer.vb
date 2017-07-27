@@ -30,12 +30,16 @@ Partial Class Form3
         Me.tmrMousePosition = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMousePositionAddItem = New System.Windows.Forms.Timer(Me.components)
         Me.ControlTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.tmrCheckRunningBots = New System.Windows.Forms.Timer(Me.components)
         Me.FormSkin1 = New BillardBot.FormSkin()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.FlatTabControl1 = New BillardBot.FlatTabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.btnStartBs = New BillardBot.FlatButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblProcessAmount = New System.Windows.Forms.Label()
+        Me.btnStartBotx2 = New BillardBot.FlatButton()
+        Me.lblActiveBots = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnSave = New BillardBot.FlatButton()
         Me.DebuggerList = New BillardBot.FlatListBox()
@@ -93,6 +97,10 @@ Partial Class Form3
         '
         Me.tmrMousePositionAddItem.Interval = 800
         '
+        'tmrCheckRunningBots
+        '
+        Me.tmrCheckRunningBots.Interval = 1000
+        '
         'FormSkin1
         '
         Me.FormSkin1.BackColor = System.Drawing.Color.White
@@ -119,13 +127,13 @@ Partial Class Form3
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Silver
         Me.Label1.Location = New System.Drawing.Point(3, 54)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(257, 16)
+        Me.Label1.Size = New System.Drawing.Size(75, 13)
         Me.Label1.TabIndex = 19
-        Me.Label1.Text = "Created By, ZxPwd [Credz: StevenIT3]"
+        Me.Label1.Text = "BUILD: 1010"
         '
         'FlatTabControl1
         '
@@ -136,7 +144,7 @@ Partial Class Form3
         Me.FlatTabControl1.Controls.Add(Me.TabPage3)
         Me.FlatTabControl1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.FlatTabControl1.ItemSize = New System.Drawing.Size(120, 40)
-        Me.FlatTabControl1.Location = New System.Drawing.Point(3, 79)
+        Me.FlatTabControl1.Location = New System.Drawing.Point(3, 77)
         Me.FlatTabControl1.Name = "FlatTabControl1"
         Me.FlatTabControl1.SelectedIndex = 0
         Me.FlatTabControl1.Size = New System.Drawing.Size(374, 372)
@@ -181,21 +189,63 @@ Partial Class Form3
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(82, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.lblProcessAmount)
+        Me.Panel1.Controls.Add(Me.btnStartBotx2)
+        Me.Panel1.Controls.Add(Me.lblActiveBots)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Location = New System.Drawing.Point(8, 44)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(242, 75)
         Me.Panel1.TabIndex = 15
         '
+        'lblProcessAmount
+        '
+        Me.lblProcessAmount.AutoSize = True
+        Me.lblProcessAmount.Font = New System.Drawing.Font("Tahoma", 15.25!, System.Drawing.FontStyle.Bold)
+        Me.lblProcessAmount.ForeColor = System.Drawing.Color.Silver
+        Me.lblProcessAmount.Location = New System.Drawing.Point(6, 43)
+        Me.lblProcessAmount.Name = "lblProcessAmount"
+        Me.lblProcessAmount.Size = New System.Drawing.Size(116, 25)
+        Me.lblProcessAmount.TabIndex = 22
+        Me.lblProcessAmount.Text = "Loading..."
+        '
+        'btnStartBotx2
+        '
+        Me.btnStartBotx2.BackColor = System.Drawing.Color.Transparent
+        Me.btnStartBotx2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnStartBotx2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnStartBotx2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.btnStartBotx2.Location = New System.Drawing.Point(151, 48)
+        Me.btnStartBotx2.Name = "btnStartBotx2"
+        Me.btnStartBotx2.Rounded = False
+        Me.btnStartBotx2.Size = New System.Drawing.Size(82, 24)
+        Me.btnStartBotx2.TabIndex = 21
+        Me.btnStartBotx2.Text = "Start 8 Bots"
+        Me.btnStartBotx2.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'lblActiveBots
+        '
+        Me.lblActiveBots.AutoSize = True
+        Me.lblActiveBots.BackColor = System.Drawing.Color.Transparent
+        Me.lblActiveBots.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblActiveBots.ForeColor = System.Drawing.Color.Silver
+        Me.lblActiveBots.Location = New System.Drawing.Point(3, 25)
+        Me.lblActiveBots.Name = "lblActiveBots"
+        Me.lblActiveBots.Size = New System.Drawing.Size(109, 13)
+        Me.lblActiveBots.TabIndex = 20
+        Me.lblActiveBots.Text = "Any bots running?"
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(6, 6)
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Silver
+        Me.Label3.Location = New System.Drawing.Point(59, 3)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(75, 19)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "NOTE: ____"
+        Me.Label3.Size = New System.Drawing.Size(124, 13)
+        Me.Label3.TabIndex = 19
+        Me.Label3.Text = "LIST OF ACTIVE BOTS"
         '
         'btnSave
         '
@@ -552,11 +602,11 @@ Partial Class Form3
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(296, 55)
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Silver
+        Me.Label2.Location = New System.Drawing.Point(305, 54)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(86, 16)
+        Me.Label2.Size = New System.Drawing.Size(72, 13)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Version: 1.4"
         '
@@ -656,7 +706,6 @@ Partial Class Form3
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label39 As Label
     Friend WithEvents Label38 As Label
     Friend WithEvents posYbox As FlatTextBox
@@ -670,4 +719,9 @@ Partial Class Form3
     Friend WithEvents btnMoreOptions As FlatButton
     Friend WithEvents btnStartBs As FlatButton
     Friend WithEvents ControlTip As ToolTip
+    Friend WithEvents Label3 As Label
+    Friend WithEvents tmrCheckRunningBots As Timer
+    Friend WithEvents lblActiveBots As Label
+    Friend WithEvents btnStartBotx2 As FlatButton
+    Friend WithEvents lblProcessAmount As Label
 End Class
