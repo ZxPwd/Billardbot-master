@@ -1,6 +1,7 @@
 # Billardbot-master
 # Current Version: 1.4
 
+Video preview of bot: https://www.youtube.com/watch?v=o6vKV7G7io4
 
 
 All 3 projects are needed:
