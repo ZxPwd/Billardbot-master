@@ -1,5 +1,8 @@
 ﻿Module ShortcutModules
 
+
+
+#Region "JASON"
     Public Sub KillAllBots()
         '''''''''BELOW HERE WAS THE OLD METHOD OF USING 4 BOTS'''''
         'For Each p As Process In Process.GetProcesses()
@@ -295,4 +298,32 @@
 
     End Sub
 
+#End Region
+
+
+
+
+
 End Module
+Class Shortcut
+    Public Shared Sub LogIt(ByVal LogList As ListBox)
+        Dim dateAsString = DateTime.Now.ToString("d-MMM")
+        Dim SplitTime = dateAsString.ToString().Split("-")
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt") Then
+            FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Append)
+            PrintLine(1, Environment.NewLine + "Time:" + DateTime.Now.ToString("HH:mm:ss"))
+            For i = 0 To LogList.Items.Count - 1
+                PrintLine(1, LogList.Items(i))
+            Next
+        Else
+            FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
+            PrintLine(1, Environment.NewLine + "Time:" + DateTime.Now.ToString("HH:mm:ss"))
+            For i = 0 To LogList.Items.Count - 1
+                PrintLine(1, LogList.Items(i))
+            Next
+
+        End If
+        FileClose()
+    End Sub
+
+End Class

@@ -447,13 +447,7 @@ ByVal lpFileName As String) As Integer
 
     Private Sub BtnSaveLog_Click(sender As Object, e As EventArgs) Handles BtnSaveLog.Click
 
-        Dim dateAsString = DateTime.Now.ToString("HH-mm-d-MMM")
-        FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
-        For i = 0 To DebuggerList.Items.Count - 1
-            PrintLine(1, DebuggerList.Items(i))
-        Next
-        FileClose()
-
+        Shortcut.LogIt(DebuggerList)
 
     End Sub
 
@@ -483,5 +477,13 @@ ByVal lpFileName As String) As Integer
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         My.Settings.Closed = My.Settings.Closed + 1
         My.Settings.Save()
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        Shortcut.LogIt(DebuggerList)
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        DebuggerList.Items.Add("ADD FJWEIFWJFWJFIJFWJF")
     End Sub
 End Class
