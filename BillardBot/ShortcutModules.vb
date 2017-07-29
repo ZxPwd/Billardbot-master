@@ -6,7 +6,7 @@
         '        If p.ProcessName = "Bot1" Then 'Or p.ProcessName = "mspaint"
         '            p.Kill()
         '            Form2.DebuggerList.Items.Add("TERMINATED: Bot1.exe")
-        '            Form3.DebuggerList.AddItem("TERMINATED: Bot1.exe")
+        '            Form3.DebuggerList.Items.Add("TERMINATED: Bot1.exe")
         '        End If
         '    Next
 
@@ -14,7 +14,7 @@
         '        If p2.ProcessName = "Bot2" Then 'Or p.ProcessName = "mspaint"
         '            p2.Kill()
         '            Form2.DebuggerList.Items.Add("TERMINATED: Bot2.exe")
-        '            Form3.DebuggerList.AddItem("TERMINATED: Bot2.exe")
+        '            Form3.DebuggerList.Items.Add("TERMINATED: Bot2.exe")
         '        End If
         '    Next
 
@@ -22,7 +22,7 @@
         '        If p3.ProcessName = "Bot3" Then 'Or p.ProcessName = "mspaint"
         '            p3.Kill()
         '            Form2.DebuggerList.Items.Add("TERMINATED: Bot3.exe")
-        '            Form3.DebuggerList.AddItem("TERMINATED: Bot3.exe")
+        '            Form3.DebuggerList.Items.Add("TERMINATED: Bot3.exe")
         '        End If
         '    Next
 
@@ -30,7 +30,7 @@
         '        If p4.ProcessName = "Bot4" Then 'Or p.ProcessName = "mspaint"
         '            p4.Kill()
         '            Form2.DebuggerList.Items.Add("TERMINATED: Bot4.exe")
-        '            Form3.DebuggerList.AddItem("TERMINATED: Bot4.exe")
+        '            Form3.DebuggerList.Items.Add("TERMINATED: Bot4.exe")
         '        End If
         '    Next
         '''''''''''''END OF OLD METHOD
@@ -39,7 +39,7 @@
             If p5.ProcessName = "Bot" Then 'Or p.ProcessName = "mspaint"
                 p5.Kill()
                 Form2.DebuggerList.Items.Add("TERMINATED: Bot.exe")
-                Form3.DebuggerList.AddItem("TERMINATED: Bot.exe")
+                Form3.DebuggerList.Items.Add("TERMINATED: Bot.exe")
             End If
         Next
 
@@ -52,7 +52,7 @@
                 If p5.ProcessName = "Bot" Then 'Or p.ProcessName = "mspaint"
                     p5.Kill()
                     Form2.DebuggerList.Items.Add("TERMINATED: Bot.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: Bot.exe")
+                    Form3.DebuggerList.Items.Add("TERMINATED: Bot.exe")
                 End If
             Next
         End If
@@ -65,49 +65,49 @@
         For Each p6 As Process In Process.GetProcesses()
             If p6.ProcessName = "HD-Agent" Then 'Or p.ProcessName = "mspaint"
                 p6.Kill()
-                Form2.DebuggerList.Items.Add("TERMINATED: HD-Agent.exe") 'Form3.DebuggerList.AddItem
-                Form3.DebuggerList.AddItem("TERMINATED: HD-Agent.exe")
+                Form2.DebuggerList.Items.Add("TERMINATED: HD-Agent.exe") 'Form3.DebuggerList.Items.Add
+                Form3.DebuggerList.Items.Add("TERMINATED: HD-Agent.exe")
             End If
         Next
 
         For Each p6 As Process In Process.GetProcesses()
-                If p6.ProcessName = "HD-LogRotatorService" Then 'Or p.ProcessName = "mspaint"
-                    p6.Kill()
-                    Form2.DebuggerList.Items.Add("TERMINATED: HD-LogRotatorService.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-LogRotatorService.exe")
+            If p6.ProcessName = "HD-LogRotatorService" Then 'Or p.ProcessName = "mspaint"
+                p6.Kill()
+                Form2.DebuggerList.Items.Add("TERMINATED: HD-LogRotatorService.exe")
+                Form3.DebuggerList.Items.Add("TERMINATED: HD-LogRotatorService.exe")
 
-                End If
-            Next
+            End If
+        Next
 
-            For Each p6 As Process In Process.GetProcesses()
-                If p6.ProcessName = "HD-OBS" Then 'Or p.ProcessName = "mspaint"
-                    p6.Kill()
-                    Form2.DebuggerList.Items.Add("TERMINATED: HD-OBS.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-OBS.exe")
-                End If
-            Next
+        For Each p6 As Process In Process.GetProcesses()
+            If p6.ProcessName = "HD-OBS" Then 'Or p.ProcessName = "mspaint"
+                p6.Kill()
+                Form2.DebuggerList.Items.Add("TERMINATED: HD-OBS.exe")
+                Form3.DebuggerList.Items.Add("TERMINATED: HD-OBS.exe")
+            End If
+        Next
 
-            For Each p6 As Process In Process.GetProcesses()
-                If p6.ProcessName = "HD-Plus-Frontend" Then 'Or p.ProcessName = "mspaint"
-                    p6.Kill()
-                    Form2.DebuggerList.Items.Add("TERMINATED: HD-Plus-Frontend.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-Plus-Frontend.exe")
-                End If
-            Next
+        For Each p6 As Process In Process.GetProcesses()
+            If p6.ProcessName = "HD-Plus-Frontend" Then 'Or p.ProcessName = "mspaint"
+                p6.Kill()
+                Form2.DebuggerList.Items.Add("TERMINATED: HD-Plus-Frontend.exe")
+                Form3.DebuggerList.Items.Add("TERMINATED: HD-Plus-Frontend.exe")
+            End If
+        Next
 
-            For Each p6 As Process In Process.GetProcesses()
-                If p6.ProcessName = "HD-Plus-Service" Then 'Or p.ProcessName = "mspaint"
-                    p6.Kill()
-                    Form2.DebuggerList.Items.Add("TERMINATED: HD-Plus-Service.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-Plus-Service.exe")
-                End If
-            Next
+        For Each p6 As Process In Process.GetProcesses()
+            If p6.ProcessName = "HD-Plus-Service" Then 'Or p.ProcessName = "mspaint"
+                p6.Kill()
+                Form2.DebuggerList.Items.Add("TERMINATED: HD-Plus-Service.exe")
+                Form3.DebuggerList.Items.Add("TERMINATED: HD-Plus-Service.exe")
+            End If
+        Next
 
-            'For Each p7 As Process In Process.GetProcesses()
+        'For Each p7 As Process In Process.GetProcesses()
         '    If p7.ProcessName = "BlueStacks_old" Then 'Or p.ProcessName = "mspaint"
         '        p7.Kill()
         '        Form2.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
-        '        Form3.DebuggerList.AddItem("TERMINATED: BlueStacks_old.exe")
+        '        Form3.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
         '    End If
         'Next
 
@@ -121,8 +121,8 @@
             For Each p6 As Process In Process.GetProcesses()
                 If p6.ProcessName = "HD-Agent" Then 'Or p.ProcessName = "mspaint"
                     p6.Kill()
-                    Form2.DebuggerList.Items.Add("TERMINATED: HD-Agent.exe") 'Form3.DebuggerList.AddItem
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-Agent.exe")
+                    Form2.DebuggerList.Items.Add("TERMINATED: HD-Agent.exe") 'Form3.DebuggerList.Items.Add
+                    Form3.DebuggerList.Items.Add("TERMINATED: HD-Agent.exe")
                 End If
             Next
 
@@ -130,7 +130,7 @@
                 If p6.ProcessName = "HD-LogRotatorService" Then 'Or p.ProcessName = "mspaint"
                     p6.Kill()
                     Form2.DebuggerList.Items.Add("TERMINATED: HD-LogRotatorService.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-LogRotatorService.exe")
+                    Form3.DebuggerList.Items.Add("TERMINATED: HD-LogRotatorService.exe")
 
                 End If
             Next
@@ -139,7 +139,7 @@
                 If p6.ProcessName = "HD-OBS" Then 'Or p.ProcessName = "mspaint"
                     p6.Kill()
                     Form2.DebuggerList.Items.Add("TERMINATED: HD-OBS.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-OBS.exe")
+                    Form3.DebuggerList.Items.Add("TERMINATED: HD-OBS.exe")
                 End If
             Next
 
@@ -147,7 +147,7 @@
                 If p6.ProcessName = "HD-Plus-Frontend" Then 'Or p.ProcessName = "mspaint"
                     p6.Kill()
                     Form2.DebuggerList.Items.Add("TERMINATED: HD-Plus-Frontend.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-Plus-Frontend.exe")
+                    Form3.DebuggerList.Items.Add("TERMINATED: HD-Plus-Frontend.exe")
                 End If
             Next
 
@@ -155,7 +155,7 @@
                 If p6.ProcessName = "HD-Plus-Service" Then 'Or p.ProcessName = "mspaint"
                     p6.Kill()
                     Form2.DebuggerList.Items.Add("TERMINATED: HD-Plus-Service.exe")
-                    Form3.DebuggerList.AddItem("TERMINATED: HD-Plus-Service.exe")
+                    Form3.DebuggerList.Items.Add("TERMINATED: HD-Plus-Service.exe")
                 End If
             Next
 
@@ -163,7 +163,7 @@
             '    If p7.ProcessName = "BlueStacks_old" Then 'Or p.ProcessName = "mspaint"
             '        p7.Kill()
             '        Form2.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
-            '        Form3.DebuggerList.AddItem("TERMINATED: BlueStacks_old.exe")
+            '        Form3.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
             '    End If
             'Next
 

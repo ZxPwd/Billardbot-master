@@ -5,6 +5,8 @@ Imports System.IO
 Imports System.Text
 Imports System.Net
 Imports System
+Imports System.ComponentModel
+
 Public Class Form3
     Dim sec As Integer
     Dim min As Integer
@@ -68,6 +70,11 @@ ByVal lpFileName As String) As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         tmrCheckRunningBots.Start()
+        lblClosedTimes.Text = My.Settings.Closed.ToString()
+
+
+
+
 
         If Process.GetProcessesByName("Bot1").Count > 0 Then
             KillAllBots()
@@ -101,7 +108,7 @@ ByVal lpFileName As String) As Integer
         CheckLoop = ReadIniValue("C:\BillardBot\settings.ini", "data", "Loop")
         txtMin.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "Minutes")
         txtSecs.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "Seconds")
-        DebuggerList.AddItem("Form Loaded" & " @ " & My.Computer.Clock.LocalTime)
+        DebuggerList.Items.Add("Form Loaded" & " @ " & My.Computer.Clock.LocalTime)
 
         ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         ';;;;;;;;;;;; BELOW HERE IS THE CHECKBOX FOR LOOPING THE BOT          ;;;;;;;;;;;;;
@@ -112,31 +119,31 @@ ByVal lpFileName As String) As Integer
 
 
         If CheckLoop = "LoopTrue" Then
-                LoopCheckBox.Checked = True
-                System.Windows.Forms.Cursor.Position = New System.Drawing.Point(1911, 1024) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
-                mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
-                mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
+            LoopCheckBox.Checked = True
+            System.Windows.Forms.Cursor.Position = New System.Drawing.Point(1911, 1024) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0) ' MOVES CURSOR TO BOTTOM RIGHT CORNER *DO NOT REMOVE THIS*
 
-                Dim x As Integer ' Positions the window to the bottom right so it's not in the way of bluestacks
-                Dim y As Integer ' Positions the window to the bottom right so it's not in the way of bluestacks
-                x = Screen.PrimaryScreen.WorkingArea.Width - 385 ' Positions the window to the bottom right so it's not in the way of bluestacks
-                y = Screen.PrimaryScreen.WorkingArea.Height - 1050 ' Positions the window to the bottom right so it's not in the way of bluestacks
-                Me.Location = New Point(x, y) ' Positions the window to the bottom right so it's not in the way of bluestacks
+            Dim x As Integer ' Positions the window to the bottom right so it's not in the way of bluestacks
+            Dim y As Integer ' Positions the window to the bottom right so it's not in the way of bluestacks
+            x = Screen.PrimaryScreen.WorkingArea.Width - 385 ' Positions the window to the bottom right so it's not in the way of bluestacks
+            y = Screen.PrimaryScreen.WorkingArea.Height - 1050 ' Positions the window to the bottom right so it's not in the way of bluestacks
+            Me.Location = New Point(x, y) ' Positions the window to the bottom right so it's not in the way of bluestacks
 
-                DebuggerList.AddItem("Botting Started!")
-                Threading.Thread.Sleep(500)
-                DebuggerList.AddItem("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
-                min = txtMin.Text ' SETS he minutes from textbox
-                sec = txtSecs.Text ' SETS he seconds from textbox
-                StartAllBots()
-                tmrCount.Start()
-                tmrWatchDog.Start()
-            ElseIf CheckLoop = "LoopFalse" Then
-                LoopCheckBox.Checked = False
+            DebuggerList.Items.Add("Botting Started!")
+            Threading.Thread.Sleep(500)
+            DebuggerList.Items.Add("Timer set to: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
+            min = txtMin.Text ' SETS he minutes from textbox
+            sec = txtSecs.Text ' SETS he seconds from textbox
+            StartAllBots()
+            tmrCount.Start()
+            tmrWatchDog.Start()
+        ElseIf CheckLoop = "LoopFalse" Then
+            LoopCheckBox.Checked = False
 
-            Else
-                DebuggerList.AddItem("Loop not activated")
-            End If
+        Else
+            DebuggerList.Items.Add("Loop not activated")
+        End If
 
 
 
@@ -192,9 +199,9 @@ ByVal lpFileName As String) As Integer
         mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
-        DebuggerList.AddItem("Botting Started!")
+        DebuggerList.Items.Add("Botting Started!")
         Threading.Thread.Sleep(500)
-        DebuggerList.AddItem("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
+        DebuggerList.Items.Add("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
         min = txtMin.Text ' SETS he minutes from textbox
         sec = txtSecs.Text ' SETS he seconds from textbox
         StartAllBots()
@@ -205,7 +212,7 @@ ByVal lpFileName As String) As Integer
 
     Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
         lblDebugger.Text = ("Status: Bot Stopped")
-        DebuggerList.AddItem("Botting Stopped. Reseted minutes + sec")
+        DebuggerList.Items.Add("Botting Stopped. Reseted minutes + sec")
 
         KillAllBots()
         tmrCount.Stop()
@@ -229,6 +236,15 @@ ByVal lpFileName As String) As Integer
         '2) KILL PROCESSES OF ALL ACTIVE RUNNING BOTS!
         '3) START PROCESS OF BLUESTACKS RESTART BOT // MADE IN VB.NET
         If lblMin.Text = "0" Then
+            My.Settings.Closed = My.Settings.Closed + 1
+            My.Settings.Save()
+
+            Dim dateAsString = DateTime.Now.ToString("HH-mm-d-MMM")
+            FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
+            For i = 0 To DebuggerList.Items.Count - 1
+                PrintLine(1, DebuggerList.Items(i))
+            Next
+            FileClose()
 
             'ActionList.Items.Add("LOOP: Elapsed Time") ' TELLS ME WHEN IT STOPPED TO KEEP TRACK OF HOW MANY TIME IT RAN
             'lblActionList.Text = ("ActionList: Stopped Listening") ' SO I KNOW ITS NOT LISTENING ANYMORE
@@ -244,7 +260,11 @@ ByVal lpFileName As String) As Integer
             tmrWatchDog.Stop() ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
             tmrCount.Stop()    ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
             tmrStartBot.Stop() ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
-            End
+
+
+
+
+            End ' This is where the program stops <------
         Else
             lblDebugger.Text = ("Status: Bot is currently active!") 'TELLS ME WHEN THE TIMER IS ACTIVE
 
@@ -304,6 +324,19 @@ ByVal lpFileName As String) As Integer
     End Sub
 
     Private Sub btnRestartBot_Click(sender As Object, e As EventArgs) Handles btnRestartBot.Click
+        My.Settings.Closed = My.Settings.Closed + 1
+        My.Settings.Save()
+
+        Dim dateAsString = DateTime.Now.ToString("HH-mm-d-MMM")
+        FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
+        For i = 0 To DebuggerList.Items.Count - 1
+            PrintLine(1, DebuggerList.Items(i))
+        Next
+        FileClose()
+
+
+
+
         KillAllBots() ' From ShortcutModules
         KillBs() ' Kill BlueStacks Processes
         Thread.Sleep(1500)
@@ -370,8 +403,8 @@ ByVal lpFileName As String) As Integer
 
 
         Else
-                'lblActiveBots.Text = ("STATUS: There is ") + ("( ") + proc + (" )") + ("bot running!")
-                lblActiveBots.ForeColor = Color.Orange
+            'lblActiveBots.Text = ("STATUS: There is ") + ("( ") + proc + (" )") + ("bot running!")
+            lblActiveBots.ForeColor = Color.Orange
             lblActiveBots.Text = ("STATUS: There is" & " " & proc & " " & "bots runnings")
 
 
@@ -393,9 +426,9 @@ ByVal lpFileName As String) As Integer
         mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
-        DebuggerList.AddItem("Botting Started!")
+        DebuggerList.Items.Add("Botting Started!")
         Threading.Thread.Sleep(500)
-        DebuggerList.AddItem("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
+        DebuggerList.Items.Add("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
         min = txtMin.Text ' SETS he minutes from textbox
         sec = txtSecs.Text ' SETS he seconds from textbox
         StartAllBots()
@@ -408,14 +441,47 @@ ByVal lpFileName As String) As Integer
     '    lblStatus.Text = status & " @ " & My.Computer.Clock.LocalTime
     'End Sub
     Private Sub btnClearLog_Click(sender As Object, e As EventArgs) Handles btnClearLog.Click
-        DebuggerList.Clear()
-        DebuggerList.AddItem(" @ " & My.Computer.Clock.LocalTime)
+        DebuggerList.Items.Clear()
+        DebuggerList.Items.Add(" @ " & My.Computer.Clock.LocalTime)
     End Sub
 
     Private Sub BtnSaveLog_Click(sender As Object, e As EventArgs) Handles BtnSaveLog.Click
-        FileOpen(1, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\zieixt's list.txt", OpenMode.Output)
-        For i = 0 To DebuggerList.items.Count - 1
-            PrintLine(1, DebuggerList.items(i))
+
+        Dim dateAsString = DateTime.Now.ToString("HH-mm-d-MMM")
+        FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
+        For i = 0 To DebuggerList.Items.Count - 1
+            PrintLine(1, DebuggerList.Items(i))
         Next
+        FileClose()
+
+
+    End Sub
+
+
+
+
+
+    Private Sub FlatClose1_Click(sender As Object, e As EventArgs) Handles FlatClose1.Click
+
+
+
+        Dim dateAsString = DateTime.Now.ToString("HH-mm-d-MMM")
+        FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
+        For i = 0 To DebuggerList.Items.Count - 1
+            PrintLine(1, DebuggerList.Items(i))
+        Next
+        FileClose()
+
+
+    End Sub
+
+    Private Sub btnResetClosed_Click(sender As Object, e As EventArgs) Handles btnResetClosed.Click
+        My.Settings.Closed = 0
+        My.Settings.Save()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        My.Settings.Closed = My.Settings.Closed + 1
+        My.Settings.Save()
     End Sub
 End Class

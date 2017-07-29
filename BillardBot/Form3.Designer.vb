@@ -30,45 +30,50 @@ Partial Class Form3
         Me.tmrMousePosition = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMousePositionAddItem = New System.Windows.Forms.Timer(Me.components)
         Me.ControlTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.btnStartBs = New BillardBot.FlatButton()
+        Me.btnSave = New BillardBot.FlatButton()
+        Me.btnWinPos = New BillardBot.FlatButton()
+        Me.btnStart = New BillardBot.FlatButton()
+        Me.btnKillAll = New BillardBot.FlatButton()
+        Me.btnStop = New BillardBot.FlatButton()
+        Me.btnMoreOptions = New BillardBot.FlatButton()
+        Me.btnStopCoordinates = New BillardBot.FlatButton()
+        Me.btnGetCoordinates = New BillardBot.FlatButton()
+        Me.posYbox = New BillardBot.FlatTextBox()
+        Me.posXbox = New BillardBot.FlatTextBox()
+        Me.txtMin = New BillardBot.FlatTextBox()
+        Me.txtSecs = New BillardBot.FlatTextBox()
+        Me.LoopCheckBox = New BillardBot.FlatCheckBox()
         Me.tmrCheckRunningBots = New System.Windows.Forms.Timer(Me.components)
         Me.FormSkin1 = New BillardBot.FormSkin()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.FlatTabControl1 = New BillardBot.FlatTabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.btnStartBs = New BillardBot.FlatButton()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.DebuggerList = New System.Windows.Forms.ListBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblClosedTimes = New System.Windows.Forms.Label()
+        Me.btnResetClosed = New BillardBot.FlatButton()
         Me.BtnSaveLog = New BillardBot.FlatButton()
         Me.btnClearLog = New BillardBot.FlatButton()
         Me.btnStartBotx2 = New BillardBot.FlatButton()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.lblActiveBots = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnSave = New BillardBot.FlatButton()
-        Me.DebuggerList = New BillardBot.FlatListBox()
         Me.lblSec = New System.Windows.Forms.Label()
-        Me.btnWinPos = New BillardBot.FlatButton()
-        Me.btnStart = New BillardBot.FlatButton()
         Me.lblMin = New System.Windows.Forms.Label()
-        Me.btnKillAll = New BillardBot.FlatButton()
-        Me.btnStop = New BillardBot.FlatButton()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.btnRestartBot = New BillardBot.FlatButton()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.btnMoreOptions = New BillardBot.FlatButton()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnStopCoordinates = New BillardBot.FlatButton()
-        Me.btnGetCoordinates = New BillardBot.FlatButton()
         Me.CoordinatesList = New BillardBot.FlatListBox()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.Label38 = New System.Windows.Forms.Label()
-        Me.posYbox = New BillardBot.FlatTextBox()
-        Me.posXbox = New BillardBot.FlatTextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txtMin = New BillardBot.FlatTextBox()
-        Me.txtSecs = New BillardBot.FlatTextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.LoopCheckBox = New BillardBot.FlatCheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblDebugger = New BillardBot.FlatStatusBar()
         Me.FlatMini1 = New BillardBot.FlatMini()
@@ -99,6 +104,220 @@ Partial Class Form3
         'tmrMousePositionAddItem
         '
         Me.tmrMousePositionAddItem.Interval = 800
+        '
+        'btnStartBs
+        '
+        Me.btnStartBs.BackColor = System.Drawing.Color.Transparent
+        Me.btnStartBs.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnStartBs.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnStartBs.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnStartBs.Location = New System.Drawing.Point(320, 3)
+        Me.btnStartBs.Name = "btnStartBs"
+        Me.btnStartBs.Rounded = False
+        Me.btnStartBs.Size = New System.Drawing.Size(38, 30)
+        Me.btnStartBs.TabIndex = 16
+        Me.btnStartBs.Text = "BS"
+        Me.btnStartBs.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnStartBs, "Start BlueStacks if it isn't already active")
+        '
+        'btnSave
+        '
+        Me.btnSave.BackColor = System.Drawing.Color.Transparent
+        Me.btnSave.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnSave.Location = New System.Drawing.Point(258, 3)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Rounded = False
+        Me.btnSave.Size = New System.Drawing.Size(61, 30)
+        Me.btnSave.TabIndex = 4
+        Me.btnSave.Text = "Save"
+        Me.btnSave.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnSave, "Save your set minutes from Settings Tab")
+        '
+        'btnWinPos
+        '
+        Me.btnWinPos.BackColor = System.Drawing.Color.Transparent
+        Me.btnWinPos.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnWinPos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnWinPos.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnWinPos.Location = New System.Drawing.Point(196, 3)
+        Me.btnWinPos.Name = "btnWinPos"
+        Me.btnWinPos.Rounded = False
+        Me.btnWinPos.Size = New System.Drawing.Size(61, 30)
+        Me.btnWinPos.TabIndex = 3
+        Me.btnWinPos.Text = "PoS"
+        Me.btnWinPos.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnWinPos, "Position the bot to the top left corner")
+        '
+        'btnStart
+        '
+        Me.btnStart.BackColor = System.Drawing.Color.Transparent
+        Me.btnStart.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnStart.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnStart.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnStart.Location = New System.Drawing.Point(9, 3)
+        Me.btnStart.Name = "btnStart"
+        Me.btnStart.Rounded = False
+        Me.btnStart.Size = New System.Drawing.Size(61, 30)
+        Me.btnStart.TabIndex = 0
+        Me.btnStart.Text = "Start"
+        Me.btnStart.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnStart, "Start all AutoIT Bots")
+        '
+        'btnKillAll
+        '
+        Me.btnKillAll.BackColor = System.Drawing.Color.Transparent
+        Me.btnKillAll.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnKillAll.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnKillAll.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnKillAll.Location = New System.Drawing.Point(134, 3)
+        Me.btnKillAll.Name = "btnKillAll"
+        Me.btnKillAll.Rounded = False
+        Me.btnKillAll.Size = New System.Drawing.Size(61, 30)
+        Me.btnKillAll.TabIndex = 2
+        Me.btnKillAll.Text = "Kill All"
+        Me.btnKillAll.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnKillAll, "Kill process of all bots and bluestacks")
+        '
+        'btnStop
+        '
+        Me.btnStop.BackColor = System.Drawing.Color.Transparent
+        Me.btnStop.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnStop.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnStop.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnStop.ImeMode = System.Windows.Forms.ImeMode.Off
+        Me.btnStop.Location = New System.Drawing.Point(72, 3)
+        Me.btnStop.Name = "btnStop"
+        Me.btnStop.Rounded = False
+        Me.btnStop.Size = New System.Drawing.Size(61, 30)
+        Me.btnStop.TabIndex = 1
+        Me.btnStop.Text = "Stop"
+        Me.btnStop.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnStop, "Stop all AutoIT Bots")
+        '
+        'btnMoreOptions
+        '
+        Me.btnMoreOptions.BackColor = System.Drawing.Color.Transparent
+        Me.btnMoreOptions.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnMoreOptions.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnMoreOptions.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnMoreOptions.Location = New System.Drawing.Point(224, 326)
+        Me.btnMoreOptions.Name = "btnMoreOptions"
+        Me.btnMoreOptions.Rounded = False
+        Me.btnMoreOptions.Size = New System.Drawing.Size(96, 35)
+        Me.btnMoreOptions.TabIndex = 21
+        Me.btnMoreOptions.Text = "Processes"
+        Me.btnMoreOptions.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnMoreOptions, "Extra options to see what processes" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "are left opened from Bluestacks")
+        '
+        'btnStopCoordinates
+        '
+        Me.btnStopCoordinates.BackColor = System.Drawing.Color.Transparent
+        Me.btnStopCoordinates.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnStopCoordinates.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnStopCoordinates.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnStopCoordinates.Location = New System.Drawing.Point(155, 326)
+        Me.btnStopCoordinates.Name = "btnStopCoordinates"
+        Me.btnStopCoordinates.Rounded = False
+        Me.btnStopCoordinates.Size = New System.Drawing.Size(63, 35)
+        Me.btnStopCoordinates.TabIndex = 18
+        Me.btnStopCoordinates.Text = "Stop"
+        Me.btnStopCoordinates.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnStopCoordinates, "Stop searching for coordinates")
+        '
+        'btnGetCoordinates
+        '
+        Me.btnGetCoordinates.BackColor = System.Drawing.Color.Transparent
+        Me.btnGetCoordinates.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnGetCoordinates.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGetCoordinates.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnGetCoordinates.Location = New System.Drawing.Point(51, 326)
+        Me.btnGetCoordinates.Name = "btnGetCoordinates"
+        Me.btnGetCoordinates.Rounded = False
+        Me.btnGetCoordinates.Size = New System.Drawing.Size(98, 35)
+        Me.btnGetCoordinates.TabIndex = 17
+        Me.btnGetCoordinates.Text = "Coordinates"
+        Me.btnGetCoordinates.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.btnGetCoordinates, "Start searching for coordinates")
+        '
+        'posYbox
+        '
+        Me.posYbox.BackColor = System.Drawing.Color.Transparent
+        Me.posYbox.Location = New System.Drawing.Point(209, 168)
+        Me.posYbox.MaxLength = 32767
+        Me.posYbox.Multiline = False
+        Me.posYbox.Name = "posYbox"
+        Me.posYbox.ReadOnly = False
+        Me.posYbox.Size = New System.Drawing.Size(111, 29)
+        Me.posYbox.TabIndex = 13
+        Me.posYbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.posYbox.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.posYbox, "Get your Y mouse coordinates")
+        Me.posYbox.UseSystemPasswordChar = False
+        '
+        'posXbox
+        '
+        Me.posXbox.BackColor = System.Drawing.Color.Transparent
+        Me.posXbox.Location = New System.Drawing.Point(209, 135)
+        Me.posXbox.MaxLength = 32767
+        Me.posXbox.Multiline = False
+        Me.posXbox.Name = "posXbox"
+        Me.posXbox.ReadOnly = False
+        Me.posXbox.Size = New System.Drawing.Size(111, 29)
+        Me.posXbox.TabIndex = 12
+        Me.posXbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.posXbox.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.posXbox, "Get your X mouse coordinates")
+        Me.posXbox.UseSystemPasswordChar = False
+        '
+        'txtMin
+        '
+        Me.txtMin.BackColor = System.Drawing.Color.Transparent
+        Me.txtMin.Location = New System.Drawing.Point(11, 19)
+        Me.txtMin.MaxLength = 32767
+        Me.txtMin.Multiline = False
+        Me.txtMin.Name = "txtMin"
+        Me.txtMin.ReadOnly = False
+        Me.txtMin.Size = New System.Drawing.Size(47, 29)
+        Me.txtMin.TabIndex = 7
+        Me.txtMin.Text = "25"
+        Me.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtMin.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.txtMin, "Set minutes of botting before restarting")
+        Me.txtMin.UseSystemPasswordChar = False
+        '
+        'txtSecs
+        '
+        Me.txtSecs.BackColor = System.Drawing.Color.Transparent
+        Me.txtSecs.Location = New System.Drawing.Point(62, 19)
+        Me.txtSecs.MaxLength = 32767
+        Me.txtSecs.Multiline = False
+        Me.txtSecs.Name = "txtSecs"
+        Me.txtSecs.ReadOnly = False
+        Me.txtSecs.Size = New System.Drawing.Size(47, 29)
+        Me.txtSecs.TabIndex = 8
+        Me.txtSecs.Text = "15"
+        Me.txtSecs.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtSecs.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ControlTip.SetToolTip(Me.txtSecs, "Set seconds of botting before restarting")
+        Me.txtSecs.UseSystemPasswordChar = False
+        '
+        'LoopCheckBox
+        '
+        Me.LoopCheckBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.LoopCheckBox.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.LoopCheckBox.BorderColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.LoopCheckBox.Checked = False
+        Me.LoopCheckBox.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.LoopCheckBox.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.LoopCheckBox.Location = New System.Drawing.Point(9, 17)
+        Me.LoopCheckBox.Name = "LoopCheckBox"
+        Me.LoopCheckBox.Options = BillardBot.FlatCheckBox._Options.Style1
+        Me.LoopCheckBox.Size = New System.Drawing.Size(112, 22)
+        Me.LoopCheckBox.TabIndex = 0
+        Me.LoopCheckBox.Text = "Always Loop"
+        Me.ControlTip.SetToolTip(Me.LoopCheckBox, "Automatically start botting when opened")
         '
         'tmrCheckRunningBots
         '
@@ -157,10 +376,12 @@ Partial Class Form3
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.TabPage1.Controls.Add(Me.Button1)
+        Me.TabPage1.Controls.Add(Me.Label7)
+        Me.TabPage1.Controls.Add(Me.DebuggerList)
         Me.TabPage1.Controls.Add(Me.btnStartBs)
         Me.TabPage1.Controls.Add(Me.Panel1)
         Me.TabPage1.Controls.Add(Me.btnSave)
-        Me.TabPage1.Controls.Add(Me.DebuggerList)
         Me.TabPage1.Controls.Add(Me.lblSec)
         Me.TabPage1.Controls.Add(Me.btnWinPos)
         Me.TabPage1.Controls.Add(Me.btnStart)
@@ -174,35 +395,73 @@ Partial Class Form3
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "BillardBot"
         '
-        'btnStartBs
+        'Button1
         '
-        Me.btnStartBs.BackColor = System.Drawing.Color.Transparent
-        Me.btnStartBs.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnStartBs.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnStartBs.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnStartBs.Location = New System.Drawing.Point(320, 3)
-        Me.btnStartBs.Name = "btnStartBs"
-        Me.btnStartBs.Rounded = False
-        Me.btnStartBs.Size = New System.Drawing.Size(38, 30)
-        Me.btnStartBs.TabIndex = 16
-        Me.btnStartBs.Text = "BS"
-        Me.btnStartBs.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnStartBs, "Start BlueStacks if it isn't already active")
+        Me.Button1.Location = New System.Drawing.Point(285, 128)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(73, 35)
+        Me.Button1.TabIndex = 19
+        Me.Button1.Text = "add"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(270, 128)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(0, 19)
+        Me.Label7.TabIndex = 18
+        '
+        'DebuggerList
+        '
+        Me.DebuggerList.FormattingEnabled = True
+        Me.DebuggerList.ItemHeight = 17
+        Me.DebuggerList.Location = New System.Drawing.Point(6, 174)
+        Me.DebuggerList.Name = "DebuggerList"
+        Me.DebuggerList.Size = New System.Drawing.Size(352, 191)
+        Me.DebuggerList.TabIndex = 17
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(82, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.lblClosedTimes)
+        Me.Panel1.Controls.Add(Me.btnResetClosed)
         Me.Panel1.Controls.Add(Me.BtnSaveLog)
         Me.Panel1.Controls.Add(Me.btnClearLog)
         Me.Panel1.Controls.Add(Me.btnStartBotx2)
+        Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.lblActiveBots)
         Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Location = New System.Drawing.Point(8, 39)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(242, 129)
         Me.Panel1.TabIndex = 15
+        '
+        'lblClosedTimes
+        '
+        Me.lblClosedTimes.AutoSize = True
+        Me.lblClosedTimes.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblClosedTimes.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.lblClosedTimes.Location = New System.Drawing.Point(93, 38)
+        Me.lblClosedTimes.Name = "lblClosedTimes"
+        Me.lblClosedTimes.Size = New System.Drawing.Size(19, 21)
+        Me.lblClosedTimes.TabIndex = 19
+        Me.lblClosedTimes.Text = "0"
+        '
+        'btnResetClosed
+        '
+        Me.btnResetClosed.BackColor = System.Drawing.Color.Transparent
+        Me.btnResetClosed.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.btnResetClosed.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnResetClosed.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnResetClosed.Location = New System.Drawing.Point(184, 38)
+        Me.btnResetClosed.Name = "btnResetClosed"
+        Me.btnResetClosed.Rounded = False
+        Me.btnResetClosed.Size = New System.Drawing.Size(49, 23)
+        Me.btnResetClosed.TabIndex = 25
+        Me.btnResetClosed.Text = "Reset"
+        Me.btnResetClosed.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
         'BtnSaveLog
         '
@@ -213,7 +472,7 @@ Partial Class Form3
         Me.BtnSaveLog.Location = New System.Drawing.Point(94, 100)
         Me.BtnSaveLog.Name = "BtnSaveLog"
         Me.BtnSaveLog.Rounded = False
-        Me.BtnSaveLog.Size = New System.Drawing.Size(82, 24)
+        Me.BtnSaveLog.Size = New System.Drawing.Size(139, 24)
         Me.BtnSaveLog.TabIndex = 24
         Me.BtnSaveLog.Text = "Save Log"
         Me.BtnSaveLog.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
@@ -246,6 +505,18 @@ Partial Class Form3
         Me.btnStartBotx2.Text = "Start 8 Bots"
         Me.btnStartBotx2.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Silver
+        Me.Label6.Location = New System.Drawing.Point(9, 43)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(82, 13)
+        Me.Label6.TabIndex = 20
+        Me.Label6.Text = "RESET TIMES:"
+        '
         'lblActiveBots
         '
         Me.lblActiveBots.AutoSize = True
@@ -264,23 +535,11 @@ Partial Class Form3
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Silver
-        Me.Label5.Location = New System.Drawing.Point(9, 28)
+        Me.Label5.Location = New System.Drawing.Point(9, 53)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(224, 13)
         Me.Label5.TabIndex = 19
         Me.Label5.Text = "_______________________________"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Silver
-        Me.Label6.Location = New System.Drawing.Point(68, 46)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(100, 13)
-        Me.Label6.TabIndex = 19
-        Me.Label6.Text = "MORE CONTROLS"
         '
         'Label3
         '
@@ -294,32 +553,6 @@ Partial Class Form3
         Me.Label3.TabIndex = 19
         Me.Label3.Text = "LIST OF ACTIVE BOTS"
         '
-        'btnSave
-        '
-        Me.btnSave.BackColor = System.Drawing.Color.Transparent
-        Me.btnSave.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnSave.Location = New System.Drawing.Point(258, 3)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Rounded = False
-        Me.btnSave.Size = New System.Drawing.Size(61, 30)
-        Me.btnSave.TabIndex = 4
-        Me.btnSave.Text = "Save"
-        Me.btnSave.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnSave, "Save your set minutes from Settings Tab")
-        '
-        'DebuggerList
-        '
-        Me.DebuggerList.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.DebuggerList.items = New String() {""}
-        Me.DebuggerList.Location = New System.Drawing.Point(4, 174)
-        Me.DebuggerList.Name = "DebuggerList"
-        Me.DebuggerList.SelectedColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.DebuggerList.Size = New System.Drawing.Size(358, 192)
-        Me.DebuggerList.TabIndex = 6
-        Me.DebuggerList.Text = "FlatListBox1"
-        '
         'lblSec
         '
         Me.lblSec.AutoSize = True
@@ -332,36 +565,6 @@ Partial Class Form3
         Me.lblSec.TabIndex = 14
         Me.lblSec.Text = "SS"
         '
-        'btnWinPos
-        '
-        Me.btnWinPos.BackColor = System.Drawing.Color.Transparent
-        Me.btnWinPos.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnWinPos.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnWinPos.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnWinPos.Location = New System.Drawing.Point(196, 3)
-        Me.btnWinPos.Name = "btnWinPos"
-        Me.btnWinPos.Rounded = False
-        Me.btnWinPos.Size = New System.Drawing.Size(61, 30)
-        Me.btnWinPos.TabIndex = 3
-        Me.btnWinPos.Text = "PoS"
-        Me.btnWinPos.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnWinPos, "Position the bot to the top left corner")
-        '
-        'btnStart
-        '
-        Me.btnStart.BackColor = System.Drawing.Color.Transparent
-        Me.btnStart.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnStart.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnStart.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnStart.Location = New System.Drawing.Point(9, 3)
-        Me.btnStart.Name = "btnStart"
-        Me.btnStart.Rounded = False
-        Me.btnStart.Size = New System.Drawing.Size(61, 30)
-        Me.btnStart.TabIndex = 0
-        Me.btnStart.Text = "Start"
-        Me.btnStart.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnStart, "Start all AutoIT Bots")
-        '
         'lblMin
         '
         Me.lblMin.AutoSize = True
@@ -369,42 +572,11 @@ Partial Class Form3
         Me.lblMin.Font = New System.Drawing.Font("Tahoma", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lblMin.ImageAlign = System.Drawing.ContentAlignment.BottomRight
-        Me.lblMin.Location = New System.Drawing.Point(260, 33)
+        Me.lblMin.Location = New System.Drawing.Point(256, 39)
         Me.lblMin.Name = "lblMin"
         Me.lblMin.Size = New System.Drawing.Size(103, 77)
         Me.lblMin.TabIndex = 13
         Me.lblMin.Text = "oo"
-        '
-        'btnKillAll
-        '
-        Me.btnKillAll.BackColor = System.Drawing.Color.Transparent
-        Me.btnKillAll.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnKillAll.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnKillAll.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnKillAll.Location = New System.Drawing.Point(134, 3)
-        Me.btnKillAll.Name = "btnKillAll"
-        Me.btnKillAll.Rounded = False
-        Me.btnKillAll.Size = New System.Drawing.Size(61, 30)
-        Me.btnKillAll.TabIndex = 2
-        Me.btnKillAll.Text = "Kill All"
-        Me.btnKillAll.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnKillAll, "Kill process of all bots and bluestacks")
-        '
-        'btnStop
-        '
-        Me.btnStop.BackColor = System.Drawing.Color.Transparent
-        Me.btnStop.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnStop.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnStop.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnStop.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.btnStop.Location = New System.Drawing.Point(72, 3)
-        Me.btnStop.Name = "btnStop"
-        Me.btnStop.Rounded = False
-        Me.btnStop.Size = New System.Drawing.Size(61, 30)
-        Me.btnStop.TabIndex = 1
-        Me.btnStop.Text = "Stop"
-        Me.btnStop.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnStop, "Stop all AutoIT Bots")
         '
         'TabPage2
         '
@@ -443,6 +615,7 @@ Partial Class Form3
         Me.TabPage3.Controls.Add(Me.Label38)
         Me.TabPage3.Controls.Add(Me.posYbox)
         Me.TabPage3.Controls.Add(Me.posXbox)
+        Me.TabPage3.Controls.Add(Me.GroupBox1)
         Me.TabPage3.Controls.Add(Me.GroupBox2)
         Me.TabPage3.Controls.Add(Me.GroupBox3)
         Me.TabPage3.Location = New System.Drawing.Point(4, 44)
@@ -451,71 +624,26 @@ Partial Class Form3
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Settings"
         '
-        'btnMoreOptions
-        '
-        Me.btnMoreOptions.BackColor = System.Drawing.Color.Transparent
-        Me.btnMoreOptions.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnMoreOptions.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnMoreOptions.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnMoreOptions.Location = New System.Drawing.Point(51, 5)
-        Me.btnMoreOptions.Name = "btnMoreOptions"
-        Me.btnMoreOptions.Rounded = False
-        Me.btnMoreOptions.Size = New System.Drawing.Size(258, 27)
-        Me.btnMoreOptions.TabIndex = 21
-        Me.btnMoreOptions.Text = "More Options"
-        Me.btnMoreOptions.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnMoreOptions, "Extra options to see what processes" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "are left opened from Bluestacks")
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(52, 156)
+        Me.Label4.Location = New System.Drawing.Point(53, 198)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(199, 16)
         Me.Label4.TabIndex = 20
         Me.Label4.Text = "Add Coordinates: ALT + CTRL"
         '
-        'btnStopCoordinates
-        '
-        Me.btnStopCoordinates.BackColor = System.Drawing.Color.Transparent
-        Me.btnStopCoordinates.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnStopCoordinates.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnStopCoordinates.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnStopCoordinates.Location = New System.Drawing.Point(198, 284)
-        Me.btnStopCoordinates.Name = "btnStopCoordinates"
-        Me.btnStopCoordinates.Rounded = False
-        Me.btnStopCoordinates.Size = New System.Drawing.Size(112, 35)
-        Me.btnStopCoordinates.TabIndex = 18
-        Me.btnStopCoordinates.Text = "Stop"
-        Me.btnStopCoordinates.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnStopCoordinates, "Stop searching for coordinates")
-        '
-        'btnGetCoordinates
-        '
-        Me.btnGetCoordinates.BackColor = System.Drawing.Color.Transparent
-        Me.btnGetCoordinates.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnGetCoordinates.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnGetCoordinates.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnGetCoordinates.Location = New System.Drawing.Point(50, 284)
-        Me.btnGetCoordinates.Name = "btnGetCoordinates"
-        Me.btnGetCoordinates.Rounded = False
-        Me.btnGetCoordinates.Size = New System.Drawing.Size(142, 35)
-        Me.btnGetCoordinates.TabIndex = 17
-        Me.btnGetCoordinates.Text = "Find Coordinates"
-        Me.btnGetCoordinates.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.btnGetCoordinates, "Start searching for coordinates")
-        '
         'CoordinatesList
         '
         Me.CoordinatesList.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.CoordinatesList.items = New String() {""}
-        Me.CoordinatesList.Location = New System.Drawing.Point(50, 175)
+        Me.CoordinatesList.Location = New System.Drawing.Point(51, 217)
         Me.CoordinatesList.Name = "CoordinatesList"
         Me.CoordinatesList.SelectedColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.CoordinatesList.Size = New System.Drawing.Size(260, 99)
+        Me.CoordinatesList.Size = New System.Drawing.Size(269, 99)
         Me.CoordinatesList.TabIndex = 16
         '
         'Label39
@@ -523,7 +651,7 @@ Partial Class Form3
         Me.Label39.AutoSize = True
         Me.Label39.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
         Me.Label39.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.Label39.Location = New System.Drawing.Point(51, 127)
+        Me.Label39.Location = New System.Drawing.Point(52, 169)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(151, 23)
         Me.Label39.TabIndex = 15
@@ -534,41 +662,23 @@ Partial Class Form3
         Me.Label38.AutoSize = True
         Me.Label38.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
         Me.Label38.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.Label38.Location = New System.Drawing.Point(51, 95)
+        Me.Label38.Location = New System.Drawing.Point(52, 137)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(151, 23)
         Me.Label38.TabIndex = 14
         Me.Label38.Text = "Coordinates X:"
         '
-        'posYbox
+        'GroupBox1
         '
-        Me.posYbox.BackColor = System.Drawing.Color.Transparent
-        Me.posYbox.Location = New System.Drawing.Point(208, 126)
-        Me.posYbox.MaxLength = 32767
-        Me.posYbox.Multiline = False
-        Me.posYbox.Name = "posYbox"
-        Me.posYbox.ReadOnly = False
-        Me.posYbox.Size = New System.Drawing.Size(102, 29)
-        Me.posYbox.TabIndex = 13
-        Me.posYbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.posYbox.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.posYbox, "Get your Y mouse coordinates")
-        Me.posYbox.UseSystemPasswordChar = False
-        '
-        'posXbox
-        '
-        Me.posXbox.BackColor = System.Drawing.Color.Transparent
-        Me.posXbox.Location = New System.Drawing.Point(208, 93)
-        Me.posXbox.MaxLength = 32767
-        Me.posXbox.Multiline = False
-        Me.posXbox.Name = "posXbox"
-        Me.posXbox.ReadOnly = False
-        Me.posXbox.Size = New System.Drawing.Size(102, 29)
-        Me.posXbox.TabIndex = 12
-        Me.posXbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.posXbox.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.posXbox, "Get your X mouse coordinates")
-        Me.posXbox.UseSystemPasswordChar = False
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.GroupBox1.Location = New System.Drawing.Point(51, 3)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(269, 67)
+        Me.GroupBox1.TabIndex = 10
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Min+Sec"
         '
         'GroupBox2
         '
@@ -577,44 +687,12 @@ Partial Class Form3
         Me.GroupBox2.Controls.Add(Me.txtSecs)
         Me.GroupBox2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.GroupBox2.Location = New System.Drawing.Point(50, 34)
+        Me.GroupBox2.Location = New System.Drawing.Point(51, 76)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(123, 53)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Min+Sec"
-        '
-        'txtMin
-        '
-        Me.txtMin.BackColor = System.Drawing.Color.Transparent
-        Me.txtMin.Location = New System.Drawing.Point(11, 19)
-        Me.txtMin.MaxLength = 32767
-        Me.txtMin.Multiline = False
-        Me.txtMin.Name = "txtMin"
-        Me.txtMin.ReadOnly = False
-        Me.txtMin.Size = New System.Drawing.Size(47, 29)
-        Me.txtMin.TabIndex = 7
-        Me.txtMin.Text = "25"
-        Me.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.txtMin.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.txtMin, "Set minutes of botting before restarting")
-        Me.txtMin.UseSystemPasswordChar = False
-        '
-        'txtSecs
-        '
-        Me.txtSecs.BackColor = System.Drawing.Color.Transparent
-        Me.txtSecs.Location = New System.Drawing.Point(62, 19)
-        Me.txtSecs.MaxLength = 32767
-        Me.txtSecs.Multiline = False
-        Me.txtSecs.Name = "txtSecs"
-        Me.txtSecs.ReadOnly = False
-        Me.txtSecs.Size = New System.Drawing.Size(47, 29)
-        Me.txtSecs.TabIndex = 8
-        Me.txtSecs.Text = "15"
-        Me.txtSecs.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.txtSecs.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ControlTip.SetToolTip(Me.txtSecs, "Set seconds of botting before restarting")
-        Me.txtSecs.UseSystemPasswordChar = False
         '
         'GroupBox3
         '
@@ -622,28 +700,12 @@ Partial Class Form3
         Me.GroupBox3.Controls.Add(Me.LoopCheckBox)
         Me.GroupBox3.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.GroupBox3.Location = New System.Drawing.Point(179, 34)
+        Me.GroupBox3.Location = New System.Drawing.Point(180, 76)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(131, 53)
+        Me.GroupBox3.Size = New System.Drawing.Size(140, 53)
         Me.GroupBox3.TabIndex = 11
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Loop settings"
-        '
-        'LoopCheckBox
-        '
-        Me.LoopCheckBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.LoopCheckBox.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.LoopCheckBox.BorderColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.LoopCheckBox.Checked = False
-        Me.LoopCheckBox.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LoopCheckBox.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.LoopCheckBox.Location = New System.Drawing.Point(9, 17)
-        Me.LoopCheckBox.Name = "LoopCheckBox"
-        Me.LoopCheckBox.Options = BillardBot.FlatCheckBox._Options.Style1
-        Me.LoopCheckBox.Size = New System.Drawing.Size(112, 22)
-        Me.LoopCheckBox.TabIndex = 0
-        Me.LoopCheckBox.Text = "Always Loop"
-        Me.ControlTip.SetToolTip(Me.LoopCheckBox, "Automatically start botting when opened")
         '
         'Label2
         '
@@ -734,7 +796,6 @@ Partial Class Form3
     Friend WithEvents btnStart As FlatButton
     Friend WithEvents txtSecs As FlatTextBox
     Friend WithEvents txtMin As FlatTextBox
-    Friend WithEvents DebuggerList As FlatListBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents btnSave As FlatButton
@@ -773,5 +834,11 @@ Partial Class Form3
     Friend WithEvents BtnSaveLog As FlatButton
     Friend WithEvents btnClearLog As FlatButton
     Friend WithEvents Label5 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents DebuggerList As ListBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents lblClosedTimes As Label
+    Friend WithEvents btnResetClosed As FlatButton
     Friend WithEvents Label6 As Label
+    Friend WithEvents Button1 As Button
 End Class
