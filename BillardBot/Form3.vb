@@ -69,25 +69,27 @@ ByVal lpFileName As String) As Integer
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tmrCheckRunningBots.Start()
-        lblClosedTimes.Text = My.Settings.Closed.ToString()
+        'LoadMyAss
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        BotAmountLoad()
+        tmrBitBull.Start() 'this timer will be a timer to listen for shit from when it loads
 
+        Dim files() As String = IO.Directory.GetFiles(My.Application.Info.DirectoryPath & "\logs\")
+        For Each file As String In files
+            FlatComboBox1.Items.Add(Path.GetFileName(file.ToString))
+        Next
 
+        tmrCheckRunningBots.Start() ' Checks to see if any bots are running
+        lblClosedTimes.Text = My.Settings.Closed.ToString ' This is for the amount of times the program restarted
+        txtStartingLoot.Text = My.Settings.StartLoot
+        txtEndingLoot.Text = My.Settings.EndLoot
+        txtStartLootDate.Text = My.Settings.StartLootDate
+        tmrMath.Start() ' Start Calculating Stats
 
-
-
-        If Process.GetProcessesByName("Bot1").Count > 0 Then
-            KillAllBots()
-        ElseIf Process.GetProcessesByName("Bot2").Count > 0 Then
-            KillAllBots()
-        ElseIf Process.GetProcessesByName("Bot3").Count > 0 Then
-            KillAllBots()
-        ElseIf Process.GetProcessesByName("Bot4").Count > 0 Then
+        If Process.GetProcessesByName("Bot").Count > 0 Then
             KillAllBots()
         End If
-
-
-
 
 
         If Not Directory.Exists("C:\BillardBot") Then
@@ -96,6 +98,7 @@ ByVal lpFileName As String) As Integer
             MsgBox("File Created, Restart Bot")
             WritePrivateProfileString("data", "Minutes", "25", "C:\BillardBot\settings.ini")
             WritePrivateProfileString("data", "Seconds", "15", "C:\BillardBot\settings.ini")
+            WritePrivateProfileString("data", "StartLoot", "0", "C:\BillardBot\settings.ini")
 
             Dim path As String
             Dim returnValue As String
@@ -105,9 +108,11 @@ ByVal lpFileName As String) As Integer
 
         End If
 
+        'txtStartingLoot.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "StartLoot")
         CheckLoop = ReadIniValue("C:\BillardBot\settings.ini", "data", "Loop")
         txtMin.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "Minutes")
         txtSecs.Text = ReadIniValue("C:\BillardBot\settings.ini", "data", "Seconds")
+        CoordinatesList.AddItem("To Capture Coordinates: ALT + CTRL")
         DebuggerList.Items.Add("Form Loaded" & " @ " & My.Computer.Clock.LocalTime)
 
         ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -130,9 +135,10 @@ ByVal lpFileName As String) As Integer
             y = Screen.PrimaryScreen.WorkingArea.Height - 1050 ' Positions the window to the bottom right so it's not in the way of bluestacks
             Me.Location = New Point(x, y) ' Positions the window to the bottom right so it's not in the way of bluestacks
 
-            DebuggerList.Items.Add("Botting Started!")
+            DebuggerList.Items.Add("Bot Settings: " + txtMin.Text + " min " + txtSecs.Text + " sec " + DateTime.Now.ToString("HH:mm"))
+            DebuggerList.Items.Add("Coins: " + txtStartingLoot.Text + " // " + txtStartLootDate.Text)
             Threading.Thread.Sleep(500)
-            DebuggerList.Items.Add("Timer set to: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
+            'DebuggerList.Items.Add("Timer set to: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
             min = txtMin.Text ' SETS he minutes from textbox
             sec = txtSecs.Text ' SETS he seconds from textbox
             StartAllBots()
@@ -199,9 +205,9 @@ ByVal lpFileName As String) As Integer
         mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
-        DebuggerList.Items.Add("Botting Started!")
+        DebuggerList.Items.Add("Bot Start: " + txtMin.Text + " min " + txtSecs.Text + " sec " + DateTime.Now.ToString("HH:mm"))
+        DebuggerList.Items.Add("Coins: " + txtStartingLoot.Text + " // " + txtStartLootDate.Text)
         Threading.Thread.Sleep(500)
-        DebuggerList.Items.Add("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
         min = txtMin.Text ' SETS he minutes from textbox
         sec = txtSecs.Text ' SETS he seconds from textbox
         StartAllBots()
@@ -210,14 +216,24 @@ ByVal lpFileName As String) As Integer
 
     End Sub
 
+    Dim MyBot() As Process
     Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
-        lblDebugger.Text = ("Status: Bot Stopped")
-        DebuggerList.Items.Add("Botting Stopped. Reseted minutes + sec")
 
-        KillAllBots()
+        lblDebugger.Text = ("Status: Bot Stopped")
+
+        DebuggerList.Items.Add("Botting Stopped" & " @ " & My.Computer.Clock.LocalTime)
+
+        'KillAllBots()'
         tmrCount.Stop()
         tmrStartBot.Stop()
         tmrWatchDog.Stop()
+
+        If MyBot.Count > 0 Then
+            Process.GetProcessesByName("Bot")(0).Kill()
+
+        Else
+            Form4.lblBlueStacks.ForeColor = Color.Lime
+        End If
 
 
 
@@ -238,13 +254,8 @@ ByVal lpFileName As String) As Integer
         If lblMin.Text = "0" Then
             My.Settings.Closed = My.Settings.Closed + 1
             My.Settings.Save()
+            Shortcut.LogIt(DebuggerList) ' save log function
 
-            Dim dateAsString = DateTime.Now.ToString("HH-mm-d-MMM")
-            FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
-            For i = 0 To DebuggerList.Items.Count - 1
-                PrintLine(1, DebuggerList.Items(i))
-            Next
-            FileClose()
 
             'ActionList.Items.Add("LOOP: Elapsed Time") ' TELLS ME WHEN IT STOPPED TO KEEP TRACK OF HOW MANY TIME IT RAN
             'lblActionList.Text = ("ActionList: Stopped Listening") ' SO I KNOW ITS NOT LISTENING ANYMORE
@@ -252,14 +263,13 @@ ByVal lpFileName As String) As Integer
             ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
             '''''''BELOW HERE ENTER CODE TO KILL ALL BOTS AND START BS RESTART BOT''''''''
             '
-            KillAllBots() ' From ShortcutModules
-            KillBs() ' Kill BlueStacks Processes
+            KillAllBots() '
+            KillBs() ' 
             Thread.Sleep(1500)
-            BluestacksRestartBot() ' From ShortcutModules
-            '''''''''''
-            tmrWatchDog.Stop() ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
-            tmrCount.Stop()    ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
-            tmrStartBot.Stop() ' STOPPING ALL TIMERS IN PROGRAM! -- include others if added
+            BluestacksRestartBot()
+            tmrWatchDog.Stop()
+            tmrCount.Stop()
+            tmrStartBot.Stop() '
 
 
 
@@ -300,6 +310,7 @@ ByVal lpFileName As String) As Integer
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         WritePrivateProfileString("data", "Minutes", (txtMin.Text), "C:\BillardBot\settings.ini")
         WritePrivateProfileString("data", "Seconds", (txtSecs.Text), "C:\BillardBot\settings.ini")
+        WritePrivateProfileString("data", "StartLoot", (txtStartingLoot.Text), "C:\BillardBot\settings.ini")
 
         If LoopCheckBox.Checked = True Then
             ' SAVE 
@@ -323,7 +334,7 @@ ByVal lpFileName As String) As Integer
         End If
     End Sub
 
-    Private Sub btnRestartBot_Click(sender As Object, e As EventArgs) Handles btnRestartBot.Click
+    Private Sub btnRestartBot_Click(sender As Object, e As EventArgs) Handles btnRestarterBot.Click
         My.Settings.Closed = My.Settings.Closed + 1
         My.Settings.Save()
 
@@ -390,6 +401,7 @@ ByVal lpFileName As String) As Integer
 
     Private Sub FormSkin1_Click(sender As Object, e As EventArgs) Handles FormSkin1.Click
 
+
     End Sub
 
 
@@ -398,14 +410,14 @@ ByVal lpFileName As String) As Integer
 
 
         If Process.GetProcessesByName("Bot").Count > 0 Then
-            lblActiveBots.Text = ("STATUS: There is" & " " & proc & " " & "bots runnings")
+            lblActiveBots.Text = ("BOTS:" & " " & proc)
             lblActiveBots.ForeColor = Color.Lime
 
 
         Else
             'lblActiveBots.Text = ("STATUS: There is ") + ("( ") + proc + (" )") + ("bot running!")
             lblActiveBots.ForeColor = Color.Orange
-            lblActiveBots.Text = ("STATUS: There is" & " " & proc & " " & "bots runnings")
+            lblActiveBots.Text = ("BOTS:" & " " & proc)
 
 
         End If
@@ -426,9 +438,9 @@ ByVal lpFileName As String) As Integer
         mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
-        DebuggerList.Items.Add("Botting Started!")
+        'DebuggerList.Items.Add("Botting Started!")
+        DebuggerList.Items.Add("Bot Settings: " + txtMin.Text + " min " + txtSecs.Text + " sec " + DateTime.Now.ToString("HH:mm"))
         Threading.Thread.Sleep(500)
-        DebuggerList.Items.Add("SET: " + txtMin.Text + " minutes " + txtSecs.Text + " seconds")
         min = txtMin.Text ' SETS he minutes from textbox
         sec = txtSecs.Text ' SETS he seconds from textbox
         StartAllBots()
@@ -447,7 +459,7 @@ ByVal lpFileName As String) As Integer
 
     Private Sub BtnSaveLog_Click(sender As Object, e As EventArgs) Handles BtnSaveLog.Click
 
-        Shortcut.LogIt(DebuggerList)
+        Shortcut.LogIt(DebuggerList) 'Function to save logs
 
     End Sub
 
@@ -459,12 +471,6 @@ ByVal lpFileName As String) As Integer
 
 
 
-        Dim dateAsString = DateTime.Now.ToString("HH-mm-d-MMM")
-        FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Output)
-        For i = 0 To DebuggerList.Items.Count - 1
-            PrintLine(1, DebuggerList.Items(i))
-        Next
-        FileClose()
 
 
     End Sub
@@ -474,16 +480,181 @@ ByVal lpFileName As String) As Integer
         My.Settings.Save()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         My.Settings.Closed = My.Settings.Closed + 1
         My.Settings.Save()
     End Sub
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs)
         Shortcut.LogIt(DebuggerList)
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         DebuggerList.Items.Add("ADD FJWEIFWJFWJFIJFWJF")
+    End Sub
+
+    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click, Label8.Click
+
+    End Sub
+
+    Dim StartLoot As Integer
+    Dim EndLoot As Integer
+    Dim LootResults As Integer
+
+    Private Sub tmrMath_Tick(sender As Object, e As EventArgs) Handles tmrMath.Tick
+        On Error Resume Next
+
+
+
+
+
+        StartLoot = txtStartingLoot.Text
+        My.Settings.StartLoot = StartLoot
+
+
+        EndLoot = txtEndingLoot.Text
+        My.Settings.EndLoot = EndLoot
+
+        LootResults = EndLoot - StartLoot
+
+        If EndLoot > StartLoot Then
+            lblLootResults.Text = LootResults
+            LootResults = My.Settings.StartLoot
+            'My.Settings.Save()
+        Else
+            lblLootResults.Text = 0
+        End If
+
+
+
+
+    End Sub
+
+    Private Sub FlatButton1_Click(sender As Object, e As EventArgs) Handles FlatButton1.Click
+        My.Settings.StartLootDate = txtStartLootDate.Text
+        My.Settings.EndLoot = txtEndingLoot.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub btnOpenLogs_Click(sender As Object, e As EventArgs) Handles btnOpenLogs.Click
+        Dim FileName = FlatComboBox1.SelectedItem.ToString()
+
+        Process.Start(My.Application.Info.DirectoryPath & "\logs\" + FileName)
+
+    End Sub
+
+
+
+    Private Sub FlatButton2_Click(sender As Object, e As EventArgs) Handles FlatButton2.Click
+        txtStartLootDate.Text = ("Loot Date: " + " @ " & My.Computer.Clock.LocalTime)
+
+        My.Settings.Save()
+    End Sub
+
+    Private Sub FlatButton3_Click(sender As Object, e As EventArgs) Handles FlatButton3.Click
+        On Error Resume Next
+
+
+
+
+
+
+
+
+
+        StartLoot = txtStartingLoot.Text
+        My.Settings.StartLoot = StartLoot
+
+
+        EndLoot = txtEndingLoot.Text
+        My.Settings.EndLoot = EndLoot
+
+        LootResults = EndLoot - StartLoot
+
+        If EndLoot > StartLoot Then
+            lblLootResults.Text = LootResults
+
+            txtFinalResults.Text = "--------------------------------" & vbNewLine _
+        & (My.Settings.StartLootDate _
+        & vbNewLine _
+        & "Result Date: " + " @ " & My.Computer.Clock.LocalTime _
+        & vbNewLine _
+        & "Total Coins Made: " & LootResults) _
+        & vbNewLine _
+        & "--------------------------------"
+        Else
+            lblLootResults.Text = 0
+        End If
+
+
+    End Sub
+
+    Private Sub btnSaveResultsToLog_Click(sender As Object, e As EventArgs) Handles btnSaveResultsToLog.Click
+
+
+
+        StartLoot = txtStartingLoot.Text
+        My.Settings.StartLoot = StartLoot
+
+
+        EndLoot = txtEndingLoot.Text
+        My.Settings.EndLoot = EndLoot
+
+        LootResults = EndLoot - StartLoot
+
+        If EndLoot > StartLoot Then
+            lblLootResults.Text = LootResults
+
+            Shortcut.LogIt(DebuggerList)
+            DebuggerList.Items.Clear()
+            DebuggerList.Items.Add("--------------------------------")
+            DebuggerList.Items.Add(My.Settings.StartLootDate)
+            DebuggerList.Items.Add("Result Date: " + " @ " & My.Computer.Clock.LocalTime)
+            DebuggerList.Items.Add("Total Coins Made: " & LootResults)
+            DebuggerList.Items.Add("--------------------------------")
+        Else
+            lblLootResults.Text = 0
+        End If
+
+
+    End Sub
+
+    Private Sub tmrBitBull_Tick(sender As Object, e As EventArgs) Handles tmrBitBull.Tick
+        BotAmountSave()
+
+        If BotBox1.Checked = True Then
+            BotBox2.Checked = False
+            BotBox3.Checked = False
+            BotBox4.Checked = False
+        ElseIf BotBox2.Checked = True Then
+            BotBox1.Checked = False
+            BotBox3.Checked = False
+            BotBox4.Checked = False
+        ElseIf BotBox3.Checked = True Then
+            BotBox1.Checked = False
+            BotBox2.Checked = False
+            BotBox4.Checked = False
+        ElseIf BotBox4.Checked = True Then
+            BotBox1.Checked = False
+            BotBox2.Checked = False
+            BotBox3.Checked = False
+        ElseIf BotBox1.Checked = True Then
+            BotBox4.Checked = False
+            BotBox2.Checked = False
+            BotBox3.Checked = False
+        End If
+
+    End Sub
+
+    Private Sub BotBox2_CheckedChanged(sender As Object) Handles BotBox2.CheckedChanged
+
+    End Sub
+
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
+
+    End Sub
+
+    Private Sub lblMin_Click(sender As Object, e As EventArgs) Handles lblMin.Click
+
     End Sub
 End Class

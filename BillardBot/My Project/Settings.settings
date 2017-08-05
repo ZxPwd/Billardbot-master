@@ -5,5 +5,17 @@
     <Setting Name="Closed" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="StartLoot" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="StartLootDate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Date Input</Value>
+    </Setting>
+    <Setting Name="EndLoot" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="BotAmounts" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

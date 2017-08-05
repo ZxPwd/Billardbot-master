@@ -155,6 +155,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="billard.ico" />
+    <None Include="Resources\coins2.png" />
+    <None Include="Resources\coins.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\saveme.png" />
     <None Include="Resources\save.png" />

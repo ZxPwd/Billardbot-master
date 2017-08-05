@@ -3,6 +3,52 @@
 
 
 #Region "JASON"
+
+    Dim HdAgent() As Process
+    Dim HdLogRotator() As Process
+    Dim HdFronted() As Process
+    Dim HdPlusService() As Process
+    Dim HdBlueStacks() As Process
+    Dim HdObs() As Process
+    Dim HdUpdaterService() As Process
+
+
+    Public Sub BotAmountLoad()
+
+        If My.Settings.BotAmounts = 1 Then
+            Form3.BotBox1.Checked = True
+        ElseIf My.Settings.BotAmounts = 2 Then
+            Form3.BotBox2.Checked = True
+        ElseIf My.Settings.BotAmounts = 3 Then
+            Form3.BotBox3.Checked = True
+        ElseIf My.Settings.BotAmounts = 4 Then
+            Form3.BotBox4.Checked = True
+        End If
+    End Sub
+
+    Public Sub BotAmountSave()
+
+        If Form3.BotBox1.Checked = True Then
+            My.Settings.BotAmounts = 1
+            My.Settings.Save()
+        ElseIf Form3.BotBox2.Checked = True Then
+            My.Settings.BotAmounts = 2
+            My.Settings.Save()
+        ElseIf Form3.BotBox3.Checked = True Then
+            My.Settings.BotAmounts = 3
+            My.Settings.Save()
+        ElseIf Form3.BotBox4.Checked = True Then
+            My.Settings.BotAmounts = 4
+            My.Settings.Save()
+        End If
+
+
+    End Sub
+
+
+
+
+
     Public Sub KillAllBots()
         '''''''''BELOW HERE WAS THE OLD METHOD OF USING 4 BOTS'''''
         'For Each p As Process In Process.GetProcesses()
@@ -61,7 +107,6 @@
         End If
 
     End Sub
-
 
     Public Sub KillBs()
 
@@ -170,6 +215,14 @@
             '    End If
             'Next
 
+            For Each p7 As Process In Process.GetProcesses()
+                If p7.ProcessName = "BlueStakcs" Then 'Or p.ProcessName = "mspaint"
+                    p7.Kill()
+                    Form2.DebuggerList.Items.Add("TERMINATED:BlueStakcs.exe")
+                    Form3.DebuggerList.Items.Add("TERMINATED: BlueStakcs.exe")
+                End If
+            Next
+
         End If
 
 
@@ -177,10 +230,6 @@
 
 
     End Sub
-
-
-
-
 
     Public Sub BluestacksRestartBot()
 
@@ -203,43 +252,52 @@
     End Sub
 
     Public Sub StartAllBots()
-        'Process.Start("C:\Users\ADmin\Documents\visual studio 2015\Projects\BillardBot\BillardBot\bin\Debug\bots\Bot1.exe")
-        'Process.Start("C:\Users\ADmin\Documents\visual studio 2015\Projects\BillardBot\BillardBot\bin\Debug\bots\Bot2.exe")
-        'Process.Start("C:\Users\ADmin\Documents\visual studio 2015\Projects\BillardBot\BillardBot\bin\Debug\bots\Bot3.exe")
-        'Process.Start("C:\Users\ADmin\Documents\visual studio 2015\Projects\BillardBot\BillardBot\bin\Debug\bots\Bot4.exe")
-
-        'TESTING NEW THING BY OPENING 1 BOT MULTIPLE TIMES 07-27-17 1:50AM
-        'Process.Start("bots\Bot1.exe")
-        'Process.Start("bots\Bot2.exe")
-        'Process.Start("bots\Bot3.exe")
-        'Process.Start("bots\Bot4.exe")
-        'END OF RESVISION TESTING
-        Process.Start("bots\Bot.exe")
-        Process.Start("bots\Bot.exe")
-        Process.Start("bots\Bot.exe")
-        Process.Start("bots\Bot.exe")
 
 
 
 
-        Form2.DebuggerList.Items.Add("STARTED: Bot1, Bot2, Bot3, Bot4")
-        'Form2.DebuggerList.Items.Add("STARTED: Bot2.exe")
-        'Form2.DebuggerList.Items.Add("STARTED: Bot3.exe")
-        'Form2.DebuggerList.Items.Add("STARTED: Bot4.exe")
+        If Form3.BotBox1.Checked = True Then
+            Process.Start("bots\Bot.exe")
+            Form3.DebuggerList.Items.Add("STARTED: 1 Bot")
+        ElseIf Form3.botbox2.Checked = True Then
+            Process.Start("bots\Bot.exe")
+            Form3.DebuggerList.Items.Add("STARTED: 2 Bots")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+
+        ElseIf Form3.botbox3.Checked = True Then
+            Process.Start("bots\Bot.exe")
+            Form3.DebuggerList.Items.Add("STARTED: 4 Bots")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+
+        ElseIf Form3.botbox4.Checked = True Then
+            Process.Start("bots\Bot.exe")
+            Form3.DebuggerList.Items.Add("STARTED: 6 Bots")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+            Threading.Thread.Sleep(1500)
+            Process.Start("bots\Bot.exe")
+
+        End If
+
+
+
+
+
+
+
     End Sub
-
-
-
-
-
-    Dim HdAgent() As Process
-    Dim HdLogRotator() As Process
-    Dim HdFronted() As Process
-    Dim HdPlusService() As Process
-    Dim HdBlueStacks() As Process
-    Dim HdObs() As Process
-    Dim HdUpdaterService() As Process
-
 
     Public Sub CheckIfRunning()
 
@@ -306,8 +364,11 @@
 
 End Module
 Class Shortcut
+
+
+    'Function to save to a log
     Public Shared Sub LogIt(ByVal LogList As ListBox)
-        Dim dateAsString = DateTime.Now.ToString("d-MMM")
+        Dim dateAsString = DateTime.Now.ToString("MMM-d-yyyy")
         Dim SplitTime = dateAsString.ToString().Split("-")
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt") Then
             FileOpen(1, My.Application.Info.DirectoryPath & "\logs\" & dateAsString.ToString() & ".txt", OpenMode.Append)

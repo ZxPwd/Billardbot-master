@@ -65,6 +65,54 @@ Namespace My
                 Me("Closed") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property StartLoot() As String
+            Get
+                Return CType(Me("StartLoot"),String)
+            End Get
+            Set
+                Me("StartLoot") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Date Input")>  _
+        Public Property StartLootDate() As String
+            Get
+                Return CType(Me("StartLootDate"),String)
+            End Get
+            Set
+                Me("StartLootDate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property EndLoot() As String
+            Get
+                Return CType(Me("EndLoot"),String)
+            End Get
+            Set
+                Me("EndLoot") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property BotAmounts() As Integer
+            Get
+                Return CType(Me("BotAmounts"),Integer)
+            End Get
+            Set
+                Me("BotAmounts") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
