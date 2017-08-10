@@ -58,7 +58,6 @@ Partial Class Form3
         Me.btnResetClosed = New BillardBot.FlatButton()
         Me.BtnSaveLog = New BillardBot.FlatButton()
         Me.btnClearLog = New BillardBot.FlatButton()
-        Me.btnStartBotx2 = New BillardBot.FlatButton()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblActiveBots = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -371,7 +370,7 @@ Partial Class Form3
         Me.FormSkin1.HeaderMaximize = False
         Me.FormSkin1.Location = New System.Drawing.Point(0, 0)
         Me.FormSkin1.Name = "FormSkin1"
-        Me.FormSkin1.Size = New System.Drawing.Size(387, 526)
+        Me.FormSkin1.Size = New System.Drawing.Size(385, 526)
         Me.FormSkin1.TabIndex = 0
         Me.FormSkin1.Text = "BillardBot - Miniclip 8 Ball Pool"
         '
@@ -383,9 +382,9 @@ Partial Class Form3
         Me.Label1.ForeColor = System.Drawing.Color.Silver
         Me.Label1.Location = New System.Drawing.Point(3, 54)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 13)
+        Me.Label1.Size = New System.Drawing.Size(94, 13)
         Me.Label1.TabIndex = 19
-        Me.Label1.Text = "BUILD: 1018"
+        Me.Label1.Text = "DATE: 08-10-17"
         '
         'FlatTabControl1
         '
@@ -426,12 +425,13 @@ Partial Class Form3
         '
         Me.DebuggerList.BackColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(84, Byte), Integer))
         Me.DebuggerList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.DebuggerList.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DebuggerList.ForeColor = System.Drawing.Color.YellowGreen
         Me.DebuggerList.FormattingEnabled = True
         Me.DebuggerList.ItemHeight = 17
-        Me.DebuggerList.Location = New System.Drawing.Point(6, 174)
+        Me.DebuggerList.Location = New System.Drawing.Point(3, 180)
         Me.DebuggerList.Name = "DebuggerList"
-        Me.DebuggerList.Size = New System.Drawing.Size(352, 189)
+        Me.DebuggerList.Size = New System.Drawing.Size(360, 189)
         Me.DebuggerList.TabIndex = 17
         '
         'Panel1
@@ -442,7 +442,6 @@ Partial Class Form3
         Me.Panel1.Controls.Add(Me.btnResetClosed)
         Me.Panel1.Controls.Add(Me.BtnSaveLog)
         Me.Panel1.Controls.Add(Me.btnClearLog)
-        Me.Panel1.Controls.Add(Me.btnStartBotx2)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.lblActiveBots)
         Me.Panel1.Controls.Add(Me.Label5)
@@ -458,10 +457,10 @@ Partial Class Form3
         Me.btnRestarterBot.BaseColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnRestarterBot.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnRestarterBot.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.btnRestarterBot.Location = New System.Drawing.Point(94, 73)
+        Me.btnRestarterBot.Location = New System.Drawing.Point(6, 73)
         Me.btnRestarterBot.Name = "btnRestarterBot"
         Me.btnRestarterBot.Rounded = False
-        Me.btnRestarterBot.Size = New System.Drawing.Size(139, 24)
+        Me.btnRestarterBot.Size = New System.Drawing.Size(227, 24)
         Me.btnRestarterBot.TabIndex = 0
         Me.btnRestarterBot.Text = "RestarterBot"
         Me.btnRestarterBot.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
@@ -518,20 +517,6 @@ Partial Class Form3
         Me.btnClearLog.TabIndex = 23
         Me.btnClearLog.Text = "Clear Log"
         Me.btnClearLog.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        '
-        'btnStartBotx2
-        '
-        Me.btnStartBotx2.BackColor = System.Drawing.Color.Transparent
-        Me.btnStartBotx2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.btnStartBotx2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnStartBotx2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.btnStartBotx2.Location = New System.Drawing.Point(6, 73)
-        Me.btnStartBotx2.Name = "btnStartBotx2"
-        Me.btnStartBotx2.Rounded = False
-        Me.btnStartBotx2.Size = New System.Drawing.Size(82, 24)
-        Me.btnStartBotx2.TabIndex = 21
-        Me.btnStartBotx2.Text = "Start 8 Bots"
-        Me.btnStartBotx2.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
         'Label6
         '
@@ -999,7 +984,7 @@ Partial Class Form3
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(72, 13)
         Me.Label2.TabIndex = 16
-        Me.Label2.Text = "Version: 1.4"
+        Me.Label2.Text = "Version: 2.0"
         '
         'lblDebugger
         '
@@ -1011,7 +996,7 @@ Partial Class Form3
         Me.lblDebugger.Name = "lblDebugger"
         Me.lblDebugger.RectColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.lblDebugger.ShowTimeDate = False
-        Me.lblDebugger.Size = New System.Drawing.Size(387, 23)
+        Me.lblDebugger.Size = New System.Drawing.Size(385, 23)
         Me.lblDebugger.TabIndex = 12
         Me.lblDebugger.TextColor = System.Drawing.Color.White
         '
@@ -1021,7 +1006,7 @@ Partial Class Form3
         Me.FlatMini1.BackColor = System.Drawing.Color.White
         Me.FlatMini1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatMini1.Font = New System.Drawing.Font("Marlett", 12.0!)
-        Me.FlatMini1.Location = New System.Drawing.Point(336, 17)
+        Me.FlatMini1.Location = New System.Drawing.Point(334, 17)
         Me.FlatMini1.Name = "FlatMini1"
         Me.FlatMini1.Size = New System.Drawing.Size(18, 18)
         Me.FlatMini1.TabIndex = 5
@@ -1034,7 +1019,7 @@ Partial Class Form3
         Me.FlatClose1.BackColor = System.Drawing.Color.White
         Me.FlatClose1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(168, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.FlatClose1.Font = New System.Drawing.Font("Marlett", 10.0!)
-        Me.FlatClose1.Location = New System.Drawing.Point(360, 17)
+        Me.FlatClose1.Location = New System.Drawing.Point(358, 17)
         Me.FlatClose1.Name = "FlatClose1"
         Me.FlatClose1.Size = New System.Drawing.Size(18, 18)
         Me.FlatClose1.TabIndex = 4
@@ -1045,7 +1030,7 @@ Partial Class Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(387, 526)
+        Me.ClientSize = New System.Drawing.Size(385, 526)
         Me.Controls.Add(Me.FormSkin1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1116,7 +1101,6 @@ Partial Class Form3
     Friend WithEvents Label3 As Label
     Friend WithEvents tmrCheckRunningBots As Timer
     Friend WithEvents lblActiveBots As Label
-    Friend WithEvents btnStartBotx2 As FlatButton
     Friend WithEvents BtnSaveLog As FlatButton
     Friend WithEvents btnClearLog As FlatButton
     Friend WithEvents Label5 As Label

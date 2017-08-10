@@ -151,13 +151,13 @@
             End If
         Next
 
-        'For Each p7 As Process In Process.GetProcesses()
-        '    If p7.ProcessName = "BlueStacks_old" Then 'Or p.ProcessName = "mspaint"
-        '        p7.Kill()
-        '        Form2.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
-        '        Form3.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
-        '    End If
-        'Next
+        For Each p7 As Process In Process.GetProcesses()
+            If p7.ProcessName = "BlueStacks" Then 'Or p.ProcessName = "mspaint"
+                p7.Kill()
+                Form2.DebuggerList.Items.Add("TERMINATED: BlueStacks.exe")
+                Form3.DebuggerList.Items.Add("TERMINATED: BlueStacks.old.exe")
+            End If
+        Next
 
 
     End Sub
@@ -206,14 +206,6 @@
                     Form3.DebuggerList.Items.Add("TERMINATED: HD-Plus-Service.exe")
                 End If
             Next
-
-            'For Each p7 As Process In Process.GetProcesses()
-            '    If p7.ProcessName = "BlueStacks_old" Then 'Or p.ProcessName = "mspaint"
-            '        p7.Kill()
-            '        Form2.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
-            '        Form3.DebuggerList.Items.Add("TERMINATED: BlueStacks_old.exe")
-            '    End If
-            'Next
 
             For Each p7 As Process In Process.GetProcesses()
                 If p7.ProcessName = "BlueStakcs" Then 'Or p.ProcessName = "mspaint"

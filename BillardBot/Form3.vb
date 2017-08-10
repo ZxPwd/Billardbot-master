@@ -223,17 +223,12 @@ ByVal lpFileName As String) As Integer
 
         DebuggerList.Items.Add("Botting Stopped" & " @ " & My.Computer.Clock.LocalTime)
 
-        'KillAllBots()'
+        KillAllBots() '
         tmrCount.Stop()
         tmrStartBot.Stop()
         tmrWatchDog.Stop()
 
-        If MyBot.Count > 0 Then
-            Process.GetProcessesByName("Bot")(0).Kill()
 
-        Else
-            Form4.lblBlueStacks.ForeColor = Color.Lime
-        End If
 
 
 
@@ -432,22 +427,7 @@ ByVal lpFileName As String) As Integer
 
     End Sub
 
-    Private Sub btnStartBotx2_Click(sender As Object, e As EventArgs) Handles btnStartBotx2.Click
 
-        System.Windows.Forms.Cursor.Position = New System.Drawing.Point(1911, 1024) '  Close habbo "Room Explorer"
-        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
-        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
-
-        'DebuggerList.Items.Add("Botting Started!")
-        DebuggerList.Items.Add("Bot Settings: " + txtMin.Text + " min " + txtSecs.Text + " sec " + DateTime.Now.ToString("HH:mm"))
-        Threading.Thread.Sleep(500)
-        min = txtMin.Text ' SETS he minutes from textbox
-        sec = txtSecs.Text ' SETS he seconds from textbox
-        StartAllBots()
-        StartAllBots()
-        tmrCount.Start()
-        tmrWatchDog.Start()
-    End Sub
 
     'Sub status(ByVal status As String)
     '    lblStatus.Text = status & " @ " & My.Computer.Clock.LocalTime
