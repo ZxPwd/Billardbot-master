@@ -1,5 +1,5 @@
 # Billardbot-master
-# Current Version: 1.4
+# Current Version: 2.0
 
 Video preview of bot: https://www.youtube.com/watch?v=o6vKV7G7io4
 
